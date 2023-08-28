@@ -38,13 +38,24 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    def androidVersion = '1.7.0'
+    def appVersion = '1.6.1'
+    def materialVersion = '1.9.0'
+    def layoutVersion = '2.1.4'
+    def unitTestVersion = '4.13.2'
+    def testImplVersion = '1.1.5'
+    def espressoVersion = '3.5.1'
+    def navVersion = '2.6.0'
+    implementation "androidx.core:core-ktx:$androidVersion"
+    implementation "androidx.appcompat:appcompat:$appVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$layoutVersion"
+    testImplementation "junit:junit:$unitTestVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testImplVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
 
     def coil_version = '2.4.0'
     implementation "io.coil-kt:coil:$coil_version"
