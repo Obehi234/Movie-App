@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/home" android:icon=""  android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item android:id="@+id/home"
+        android:icon="@drawable/movie_home"
+        android:title="@string/home" />
+
+    <item android:id="@+id/play"
+        android:icon="@drawable/light_play"
+        android:title="@string/play" />
+
+    <item android:id="@+id/profile"
+        android:icon="@drawable/group_254"
+        android:title="@string/profile" />
 </menu>

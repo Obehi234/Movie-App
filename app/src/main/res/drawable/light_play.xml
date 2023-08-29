@@ -7,7 +7,7 @@
   <path
       android:pathData="M37,22C37,30.285 30.285,37 22,37C13.715,37 7,30.285 7,22C7,13.717 13.715,7 22,7C30.285,7 37,13.717 37,22Z"
       android:fillColor="#DADADA"
-      android:fillAlpha="0.2"/>
+      android:fillAlpha="0.4"/>
   <path
       android:pathData="M22,37.137C30.36,37.137 37.137,30.36 37.137,22C37.137,13.642 30.36,6.863 22,6.863C13.64,6.863 6.863,13.642 6.863,22C6.863,30.36 13.64,37.137 22,37.137Z"
       android:strokeLineJoin="round"
@@ -16,13 +16,13 @@
       android:strokeLineCap="round">
     <aapt:attr name="android:strokeColor">
       <gradient 
-          android:startX="11.775"
-          android:startY="10.495"
-          android:endX="30.912"
-          android:endY="34.196"
+          android:startX="34.873"
+          android:startY="12.417"
+          android:endX="1.456"
+          android:endY="13.507"
           android:type="linear">
-        <item android:offset="0" android:color="#3FFFFFFF"/>
-        <item android:offset="1" android:color="#00FFFFFF"/>
+        <item android:offset="0" android:color="#FFFFFFFF"/>
+        <item android:offset="1" android:color="#33FFFFFF"/>
       </gradient>
     </aapt:attr>
   </path>

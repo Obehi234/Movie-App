@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="screen_bg">#15141f</color>
     <color name="orange_accent_icon_color">#FF7B0D</color>
-    <color name="inactive_icon_color">#22dadada</color>
+    <color name="inactive_icon_color">#C2C2C2</color>
+    <color name="orange_icon">#FF8F71</color>
+
 </resources>
