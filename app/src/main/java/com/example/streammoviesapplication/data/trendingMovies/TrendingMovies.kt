@@ -1,6 +1,6 @@
 package com.example.streammoviesapplication.data.trendingMovies
 
-data class Result(
+data class TrendingMovies(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
