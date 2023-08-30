@@ -1,5 +1,7 @@
 package com.example.streammoviesapplication.utils
 
+import com.example.streammoviesapplication.BuildConfig
+
 object Constants {
-    const val API_KEY = "5a3975e2ec5d680f7e12dc27018913ff"
+    const val API_KEY = BuildConfig.API_KEY
 }
