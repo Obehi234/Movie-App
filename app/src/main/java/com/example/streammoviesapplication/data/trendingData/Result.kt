@@ -1,10 +1,11 @@
-package com.example.streammoviesapplication.data.remoteData
+package com.example.streammoviesapplication.data.trendingData
 
 data class Result(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
     val id: Int,
+    val media_type: String,
     val original_language: String,
     val original_title: String,
     val overview: String,
