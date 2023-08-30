@@ -1,7 +1,8 @@
-package com.example.streammoviesapplication
+package com.example.streammoviesapplication.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.streammoviesapplication.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
