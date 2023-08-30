@@ -11,8 +11,14 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:navigationBarColor">@color/screen_bg</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
 
+    </style>
+
+
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:background">@color/screen_bg</item>
+        <item name="itemIconTint">@drawable/nav_color_selector</item>
     </style>
 
 </resources>
