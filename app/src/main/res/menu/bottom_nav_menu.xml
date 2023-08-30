@@ -10,6 +10,6 @@
         android:title="@string/play" />
 
     <item android:id="@+id/profile"
-        android:icon="@drawable/group_254"
+        android:icon="@drawable/profile_icon"
         android:title="@string/profile" />
 </menu>
