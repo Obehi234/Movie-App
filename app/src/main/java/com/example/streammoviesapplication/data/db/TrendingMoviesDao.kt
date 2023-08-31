@@ -8,7 +8,7 @@ import com.example.streammoviesapplication.data.trendingMovies.localData.Trendin
 import com.example.streammoviesapplication.utils.Constants.MOVIE_DATABASE
 
 @Dao
-interface MovieDao {
+interface TrendingMoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTrendingMoviesToDatabase(movies: List<TrendingMoviesEntity>)
