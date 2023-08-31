@@ -15,7 +15,7 @@ interface TrendingMoviesDao {
     suspend fun insertTrendingMovies(movies: List<TrendingMoviesEntity>)
 
     @Query("SELECT * FROM $MOVIE_DATABASE")
-    suspend fun getAllTrendingMovies() : Flow<List<TrendingMoviesEntity>>
+    fun getAllTrendingMovies() : Flow<List<TrendingMoviesEntity>>
 
 
 }

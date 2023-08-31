@@ -5,6 +5,6 @@ import androidx.room.TypeConverter
 class ListTypeConverter {
     @TypeConverter
     fun convertListToString(list: List<Int>) : String {
-        return list.joinToString { "," }
+        return list.joinToString ( separator = "," )
     }
 }
