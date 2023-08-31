@@ -13,7 +13,7 @@ class TrendingMoviesRepositoryImpl
 @Inject constructor(
     private val api: MovieService,
     private val trendingMoviesDao: TrendingMoviesDao
-): GetFromRemote {
+): TrendingMoviesRepository {
 
     override suspend fun fetchTrendingMovies(): Flow<List<TrendingMoviesEntity>> {
         val response = api.getAllTrendingMovies()
