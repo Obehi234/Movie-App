@@ -6,33 +6,28 @@ import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.MovieMapper
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class TrendingMoviesRepository
 @Inject constructor(
     private val api: MovieService,
     private val trendingMoviesDao: TrendingMoviesDao
-) {
+): TrendingMoviesImpl {
 
-    suspend fun fetchTrendingMovies(): List<TrendingMoviesEntity> {
-        return try {
-            val response = api.getAllTrendingMovies()
-            if (response.isSuccessful) {
-                val trendingMovieList = response.body()?.results ?: emptyList()
-                val movieEntities = trendingMovieList.map { result ->
-                    MovieMapper.mapRemoteToEntity(result)
-                }
-                trendingMoviesDao.insertTrendingMovies(movieEntities)
-                trendingMoviesDao.getAllTrendingMovies()
-            } else {
-                Log.d("CHECK_DB", "Insert Trending Movies Failed! ${response.message()}")
-                emptyList()
+    override suspend fun fetchTrendingMovies(): Flow<List<TrendingMoviesEntity>> {
+        val response = api.getAllTrendingMovies()
+        if(response.isSuccessful) {
+            val movieList = response.body()?.results?: emptyList()
+            val trendingMovieList = movieList.map { result ->
+                MovieMapper.mapRemoteToEntity(result)
             }
-        } catch (e: Exception) {
-            Log.e("CHECK_DB", "Error fetching Trending movies ${e.message}")
-            emptyList()
+            trendingMoviesDao.insertTrendingMovies(trendingMovieList)
+        }else{
+            Log.d("CHECK_DB", "Insertion for TrendingMovies failed -${response.message()}")
         }
-    }
+        return trendingMoviesDao.getAllTrendingMovies()
 
+    }
 
 }
