@@ -2,9 +2,8 @@ package com.example.streammoviesapplication.data.di
 
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
+import com.example.streammoviesapplication.utils.Constants.API_KEY
 import com.example.streammoviesapplication.utils.Constants.BASE_URL
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,9 +20,29 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideApiKey() : String {
+        return API_KEY
+    }
+
+    @Singleton
+    @Provides
     fun provideOkHttpClient(apiKey: String) : OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(ApiKeyInterceptor(apiKey))
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun getRetrofitInstance(okHttpClient: OkHttpClient) : Retrofit {
+
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
@@ -33,26 +52,5 @@ object AppModule {
         return retrofit.create(MovieService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun getRetrofitInstance() : Retrofit {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-
-        val client: OkHttpClient = OkHttpClient
-            .Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        val gson: Gson = GsonBuilder()
-            .setLenient()
-            .create()
-
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-    }
 
 }
