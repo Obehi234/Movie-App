@@ -11,7 +11,7 @@ import com.example.streammoviesapplication.utils.Constants.MOVIE_DATABASE
 interface TrendingMoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTrendingMoviesToDatabase(movies: List<TrendingMoviesEntity>)
+    suspend fun insertTrendingMovies(movies: List<TrendingMoviesEntity>)
 
     @Query("SELECT * FROM $MOVIE_DATABASE")
     suspend fun getAllTrendingMovies() : List<TrendingMoviesEntity>
