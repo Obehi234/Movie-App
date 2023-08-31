@@ -1,5 +1,6 @@
 package com.example.streammoviesapplication.data.di
 
+import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.Constants.BASE_URL
 import com.google.gson.Gson
@@ -17,6 +18,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(apiKey: String) : OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(ApiKeyInterceptor(apiKey))
+            .build()
+    }
 
     @Singleton
     @Provides
