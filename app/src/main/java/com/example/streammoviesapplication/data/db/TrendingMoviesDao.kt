@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.utils.Constants.MOVIE_DATABASE
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TrendingMoviesDao {
@@ -14,7 +15,7 @@ interface TrendingMoviesDao {
     suspend fun insertTrendingMovies(movies: List<TrendingMoviesEntity>)
 
     @Query("SELECT * FROM $MOVIE_DATABASE")
-    suspend fun getAllTrendingMovies() : List<TrendingMoviesEntity>
+    suspend fun getAllTrendingMovies() : Flow<List<TrendingMoviesEntity>>
 
 
 }

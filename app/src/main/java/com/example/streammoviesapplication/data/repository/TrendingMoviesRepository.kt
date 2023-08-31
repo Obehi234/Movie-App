@@ -1,11 +1,9 @@
 package com.example.streammoviesapplication.data.repository
 
-import com.example.streammoviesapplication.data.db.TrendingMoviesDao
-import com.example.streammoviesapplication.network.MovieService
-import javax.inject.Inject
+import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
+import kotlinx.coroutines.flow.Flow
 
-class TrendingMoviesRepository @Inject constructor(private val api: MovieService,
-private val trendingMoviesDao: TrendingMoviesDao) {
-
+interface TrendingMoviesRepository{
+    suspend fun fetchTrendingMovies(): Flow<List<TrendingMoviesEntity>>
 
 }
