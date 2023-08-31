@@ -11,6 +11,5 @@ interface MovieService {
 
     @GET("/3/trending/movie/day")
     suspend fun getAllTrendingMovies(
-        @Query("language")  language: String
     ) : Response<TrendingMoviesResponse>
 }
