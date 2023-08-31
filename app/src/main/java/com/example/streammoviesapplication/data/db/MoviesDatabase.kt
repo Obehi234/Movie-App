@@ -6,5 +6,5 @@ import com.example.streammoviesapplication.data.trendingMovies.localData.Trendin
 
 @Database(entities = [TrendingMoviesEntity::class], version = 1, exportSchema = false)
 abstract class MoviesDatabase : RoomDatabase() {
-    abstract fun movieDao() : TrendingMoviesDao
+    abstract fun trendingMoviesDao() : TrendingMoviesDao
 }
