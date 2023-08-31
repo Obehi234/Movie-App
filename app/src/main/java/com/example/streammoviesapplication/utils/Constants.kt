@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.utils
 import com.example.streammoviesapplication.BuildConfig
 
 object Constants {
+    const val BASE_URL = "https://api.themoviedb.org/"
     const val API_KEY = BuildConfig.API_KEY
-    const val AuthorizationHeader = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTM5NzVlMmVjNWQ2ODBmN2UxMmRjMjcwMTg5MTNmZiIsInN1YiI6IjY0OWMwYzIzYWY1OGNiMDEzOTY5YjJmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u_Pv46tm1GHBCoPZ1jrbq2D5bNoDz55AtOHiEggVt3E"
+    const val AUTHORIZATION_HEADER = BuildConfig.AUTHORIZATION_HEADER
 }
