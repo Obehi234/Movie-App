@@ -1,10 +1,8 @@
 package com.example.streammoviesapplication.network
 
-import com.example.streammoviesapplication.data.trendingMovies.TrendingMoviesResponse
+import com.example.streammoviesapplication.data.trendingMovies.remoteData.TrendingMoviesResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
 
 
 interface MovieService {
