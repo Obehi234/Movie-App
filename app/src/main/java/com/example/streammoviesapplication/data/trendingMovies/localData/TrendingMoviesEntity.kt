@@ -1,10 +1,16 @@
-package com.example.streammoviesapplication.data.trendingMovies
+package com.example.streammoviesapplication.data.trendingMovies.localData
 
-data class TrendingMovies(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.streammoviesapplication.utils.Constants.TRENDING_MOVIES_TABLE
+
+@Entity(tableName = TRENDING_MOVIES_TABLE)
+data class TrendingMoviesEntity(
+    @PrimaryKey
+    val id: Int ,
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
-    val id: Int,
     val media_type: String,
     val original_language: String,
     val original_title: String,
