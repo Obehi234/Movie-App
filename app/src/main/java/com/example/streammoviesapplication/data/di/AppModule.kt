@@ -1,14 +1,19 @@
 package com.example.streammoviesapplication.data.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.Constants.API_KEY
 import com.example.streammoviesapplication.utils.Constants.BASE_URL
+import com.example.streammoviesapplication.utils.Constants.MOVIE_DATABASE
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -49,5 +54,20 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext context: Context) : MoviesDatabase {
+        return Room.databaseBuilder(
+            context,
+            MoviesDatabase::class.java,
+            MOVIE_DATABASE
+        )
+
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+
 
 }
