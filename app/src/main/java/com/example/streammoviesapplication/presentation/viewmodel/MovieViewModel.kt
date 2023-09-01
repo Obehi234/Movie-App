@@ -1,6 +1,5 @@
 package com.example.streammoviesapplication.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
@@ -20,13 +19,8 @@ class MovieViewModel @Inject constructor(
 
 init {
     viewModelScope.launch{
-         try{ repository.fetchTrendingMovies().collect{trendingMovies ->
+          repository.fetchTrendingMovies().collect{trendingMovies ->
              _trendingMovieList.value = trendingMovies
-             Log.d("CHECK FLOW", "Trending Movie List - $trendingMovies")
-         }
-    } catch (e: Exception) {
-             Log.e("CHECK FLOW", "Error fetching trending movies: ${e.message}")
-
          }
     }
 }
