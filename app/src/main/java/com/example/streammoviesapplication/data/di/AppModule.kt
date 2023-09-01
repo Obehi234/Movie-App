@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.streammoviesapplication.data.db.MoviesDatabase
+import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.Constants.API_KEY
@@ -68,6 +69,10 @@ object AppModule {
             .build()
     }
 
-
+@Singleton
+@Provides
+fun providesTrendingMoviesDao(database: MoviesDatabase) : TrendingMoviesDao {
+    return database.trendingMoviesDao()
+}
 
 }
