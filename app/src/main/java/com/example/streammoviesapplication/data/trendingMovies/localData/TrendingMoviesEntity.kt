@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.data.trendingMovies.localData
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.example.streammoviesapplication.data.db.ListTypeConverter
 import com.example.streammoviesapplication.utils.Constants.TRENDING_MOVIES_TABLE
 
 @Entity(tableName = TRENDING_MOVIES_TABLE)
