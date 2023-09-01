@@ -16,6 +16,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,13 +31,13 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun getRetrofitServiceInstance(retrofit: Retrofit) : MovieService {
+    fun getRetrofitServiceInstance(retrofit: Retrofit): MovieService {
         return retrofit.create(MovieService::class.java)
     }
 
     @Singleton
     @Provides
-    fun getRetrofitInstance() : Retrofit {
+    fun getRetrofitInstance(): Retrofit {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -58,7 +60,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context) : MoviesDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): MoviesDatabase {
         return Room.databaseBuilder(
             context,
             MoviesDatabase::class.java,
@@ -69,10 +71,14 @@ object AppModule {
             .build()
     }
 
-@Singleton
-@Provides
-fun providesTrendingMoviesDao(database: MoviesDatabase) : TrendingMoviesDao {
-    return database.trendingMoviesDao()
-}
+    @Singleton
+    @Provides
+    fun providesTrendingMoviesDao(database: MoviesDatabase): TrendingMoviesDao {
+        return database.trendingMoviesDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
 }
