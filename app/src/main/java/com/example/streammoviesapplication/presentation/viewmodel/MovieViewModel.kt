@@ -6,9 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
 import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,15 +20,15 @@ class MovieViewModel @Inject constructor(
 
 init {
     viewModelScope.launch{
-         repository.fetchTrendingMovies().collect{trendingMovies ->
+         try{ repository.fetchTrendingMovies().collect{trendingMovies ->
              _trendingMovieList.value = trendingMovies
              Log.d("CHECK FLOW", "Trending Movie List - $trendingMovies")
          }
+    } catch (e: Exception) {
+             Log.e("CHECK FLOW", "Error fetching trending movies: ${e.message}")
+
+         }
     }
 }
-
-
-
-
 
 }
