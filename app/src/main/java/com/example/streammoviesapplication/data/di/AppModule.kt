@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
+import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
+import com.example.streammoviesapplication.data.repository.TrendingMoviesRepositoryImpl
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.Constants.API_KEY
@@ -80,5 +82,14 @@ object AppModule {
     @Singleton
     @Provides
     fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Singleton
+    @Provides
+    fun provideTrendingMoviesRepository(
+        api: MovieService,
+        trendingMoviesDao: TrendingMoviesDao
+    ): TrendingMoviesRepository {
+        return TrendingMoviesRepositoryImpl(api, trendingMoviesDao)
+    }
 
 }
