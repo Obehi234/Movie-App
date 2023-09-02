@@ -6,8 +6,8 @@ import retrofit2.http.GET
 
 
 interface MovieService {
-
     @GET("/3/trending/movie/day")
     suspend fun getAllTrendingMovies(
     ) : Response<TrendingMoviesResponse>
 }
+
