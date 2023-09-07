@@ -26,7 +26,7 @@ class MovieViewModel @Inject constructor(
             try {
                 val response = repository.fetchTrendingMovies()
                 response.collect{result ->
-                    _trendingMovieList.value = result
+                    _trendingMovieList.value = Resource.Success(result.data)
                 }
             } catch (e: Exception) {
                 _trendingMovieList.value = Resource.Error("Something went wrong")
