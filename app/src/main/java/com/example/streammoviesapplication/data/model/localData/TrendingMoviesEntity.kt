@@ -1,4 +1,4 @@
-package com.example.streammoviesapplication.data.trendingMovies.localData
+package com.example.streammoviesapplication.data.model.localData
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

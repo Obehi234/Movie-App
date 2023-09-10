@@ -1,4 +1,4 @@
-package com.example.streammoviesapplication.data.trendingMovies.remoteData
+package com.example.streammoviesapplication.data.model.remoteData
 
 data class TrendingMoviesResponse(
     val page: Int,
