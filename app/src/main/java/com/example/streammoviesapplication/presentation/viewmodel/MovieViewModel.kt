@@ -1,12 +1,15 @@
 package com.example.streammoviesapplication.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.streammoviesapplication.data.model.localData.MovieViewState
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
-import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.utils.resource.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,8 +18,8 @@ class MovieViewModel @Inject constructor(
     private val repository: TrendingMoviesRepository
 ): ViewModel() {
 
-    private val _trendingMovieList = MutableStateFlow<Resource<List<TrendingMoviesEntity>>>(Resource.Loading())
-    val trendingMovieList: StateFlow<Resource<List<TrendingMoviesEntity>>> = _trendingMovieList.asStateFlow()
+    private var _movieState = MutableStateFlow(MovieViewState())
+    val movieState: StateFlow<MovieViewState> = _movieState
 
     init {
         fetchTrendingMovies()
@@ -26,10 +29,26 @@ class MovieViewModel @Inject constructor(
             try {
                 val response = repository.fetchTrendingMovies()
                 response.collect{result ->
-                    _trendingMovieList.value = Resource.Success(result.data)
+                    when(result) {
+                        is Resource.Success -> {
+                            _movieState.update { it.copy(isLoading = false, trendingMovies = result.data) }
+                            Log.d("VIEWMODEl_check in Viewmodel", "Viewmodel result 1 - ${result.data}")
+                            Log.d("VIEWMODEl_check in Viewmodel", "Viewmodel result 2- ${movieState.value.trendingMovies}")
+                        }
+
+                        is Resource.Error -> {
+                            _movieState.update { it.copy(isLoading = false, errorMessage = result.message) }
+
+                        }
+                        is Resource.Loading -> {
+                            _movieState.update { it.copy(isLoading = true) }
+                        }
+                    }
+
                 }
             } catch (e: Exception) {
-                _trendingMovieList.value = Resource.Error("Something went wrong")
+                Log.d("CHECK_VIEWMODEL", "Viewmodel result - ${e.message}")
+
             }
 
         }

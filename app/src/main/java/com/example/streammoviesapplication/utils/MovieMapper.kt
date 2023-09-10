@@ -1,7 +1,7 @@
 package com.example.streammoviesapplication.utils
 
-import com.example.streammoviesapplication.data.trendingMovies.localData.TrendingMoviesEntity
-import com.example.streammoviesapplication.data.trendingMovies.remoteData.TrendingMovies
+import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
+import com.example.streammoviesapplication.data.model.remoteData.TrendingMovies
 
 object MovieMapper {
 

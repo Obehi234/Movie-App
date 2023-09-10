@@ -1,4 +1,4 @@
-package com.example.streammoviesapplication.data.trendingMovies.remoteData
+package com.example.streammoviesapplication.data.model.remoteData
 
 data class TrendingMovies(
     val adult: Boolean,
