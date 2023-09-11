@@ -33,4 +33,6 @@
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="height_76dp">76dp</dimen>
+    <dimen name="height_296dp">296dp</dimen>
+    <dimen name="width_224dp">224dp</dimen>
 </resources>
