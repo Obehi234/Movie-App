@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/width_224dp"
+    android:layout_height="@dimen/height_296dp"
+    android:layout_marginEnd="@dimen/margin_24dp"
+    app:cardCornerRadius="@dimen/radius_30dp"
+    app:cardElevation="@dimen/elevation_4dp">
+
+    <ImageView
+        android:id="@+id/iv_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/image_displaying_trending_movie_poster"
+        android:scaleType="fitXY"
+        android:src="@drawable/poster" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_rating"
+            android:layout_width="@dimen/width_77dp"
+            android:layout_height="@dimen/height_46dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:elevation="@dimen/elevation_0dp"
+            app:cardBackgroundColor="@color/pop_up_bg"
+            app:cardCornerRadius="@dimen/radius_15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_imdb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_12dp"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/imdb"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_8sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_8dp"
+                    android:layout_marginTop="@dimen/margin_1dp"
+                    android:layout_marginBottom="@dimen/margin_8dp"
+                    android:src="@drawable/yellow_star"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_imdb" />
+
+                <TextView
+                    android:id="@+id/tv_rating_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5dp"
+                    android:layout_marginEnd="@dimen/margin_9dp"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/_7_0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_rating"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_rating"
+                    app:layout_constraintTop_toTopOf="@id/iv_rating" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_movie_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_76dp"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            app:cardBackgroundColor="@color/pop_up_bg"
+            app:cardCornerRadius="@dimen/radius_20dp"
+            app:cardElevation="@dimen/elevation_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_movie_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:fontFamily="@font/lato"
+                android:text="@string/star_wars_the_last_jedi"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16sp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
