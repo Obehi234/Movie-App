@@ -5,4 +5,10 @@
     <string name="profile">PROFILE</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stream_everywhere">Stream Everywhere</string>
+    <string name="movie_banner_displaying_movie_currently_being_watched">movie_banner_displaying_movie currently being watched</string>
+    <string name="play_icon_in_orange_color">play icon in orange color</string>
+    <string name="continue_watching">Continue Watching</string>
+    <string name="ready_player_one">Ready Player One</string>
+    <string name="trending">Trending</string>
 </resources>
