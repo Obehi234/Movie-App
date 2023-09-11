@@ -127,4 +127,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_trending"
         tools:listitem="@layout/movie_poster_item" />
 
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
 </androidx.constraintlayout.widget.ConstraintLayout>
