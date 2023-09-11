@@ -1,109 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screen_bg"
-    tools:context=".HomeFragment"
-    android:padding="@dimen/padding_24dp">
-
+    android:padding="@dimen/padding_24dp"
+    tools:context=".HomeFragment">
 
     <TextView
         android:id="@+id/tvBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stream_everywhere"
         android:fontFamily="@font/lato"
+        android:text="@string/stream_everywhere"
         android:textColor="@color/white"
         android:textSize="@dimen/text_24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-   <androidx.cardview.widget.CardView
-       android:id="@+id/cv_hero_banner"
-       android:layout_width="match_parent"
-       android:layout_height="@dimen/cd_height_191dp"
-       android:layout_marginTop="@dimen/margin_28dp"
-       app:cardBackgroundColor="@color/white"
-       app:cardCornerRadius="@dimen/radius_30dp"
-       app:cardElevation="@dimen/elevation_4dp"
-       app:layout_constraintTop_toBottomOf="@id/tvBoldText"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_hero_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cd_height_191dp"
+        android:layout_marginTop="@dimen/margin_28dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/radius_30dp"
+        app:cardElevation="@dimen/elevation_4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBoldText">
 
-       <ImageView
-           android:id="@+id/img_poster"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:src="@drawable/mask_group"
-           android:contentDescription="@string/movie_banner_displaying_movie_currently_being_watched"
-           android:scaleType="fitXY"/>
+        <ImageView
+            android:id="@+id/img_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/movie_banner_displaying_movie_currently_being_watched"
+            android:scaleType="fitXY"
+            android:src="@drawable/mask_group" />
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-           <androidx.cardview.widget.CardView
-               android:layout_width="@dimen/width_211dp"
-               android:layout_height="@dimen/height_62dp"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintBottom_toBottomOf="parent"
-               android:layout_marginStart="@dimen/margin_12dp"
-               app:cardCornerRadius="@dimen/radius_20dp"
-               app:cardElevation="@dimen/cardElevation_24dp"
-               app:cardBackgroundColor="@color/pop_up_bg"
-               android:layout_marginBottom="@dimen/margin_8dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/width_211dp"
+                android:layout_height="@dimen/height_62dp"
+                android:layout_marginStart="@dimen/margin_12dp"
+                android:layout_marginBottom="@dimen/margin_8dp"
+                app:cardBackgroundColor="@color/pop_up_bg"
+                app:cardCornerRadius="@dimen/radius_20dp"
+                app:cardElevation="@dimen/cardElevation_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-               <androidx.constraintlayout.widget.ConstraintLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                   <ImageView
-                       android:id="@+id/iv_play_icon"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:src="@drawable/play_active"
-                       android:layout_marginStart="@dimen/margin_12dp"
-                       android:layout_marginVertical="@dimen/margin_9dp"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent"
-                       android:contentDescription="@string/play_icon_in_orange_color"/>
+                    <ImageView
+                        android:id="@+id/iv_play_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/margin_9dp"
+                        android:layout_marginStart="@dimen/margin_12dp"
+                        android:contentDescription="@string/play_icon_in_orange_color"
+                        android:src="@drawable/play_active"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                   <TextView
-                       android:id="@+id/tv_watch_prompt"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="@dimen/margin_12dp"
-                       android:layout_marginTop="@dimen/margin_11dp"
-                       android:fontFamily="@font/lato"
-                       android:text="@string/continue_watching"
-                       android:textColor="@color/prompt_color"
-                       android:textSize="@dimen/text_12sp"
-                       app:layout_constraintStart_toEndOf="@id/iv_play_icon"
-                       app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tv_watch_prompt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_12dp"
+                        android:layout_marginTop="@dimen/margin_11dp"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/continue_watching"
+                        android:textColor="@color/prompt_color"
+                        android:textSize="@dimen/text_12sp"
+                        app:layout_constraintStart_toEndOf="@id/iv_play_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                   <TextView
-                       android:id="@+id/tv_current_movie_title"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:fontFamily="@font/lato"
-                       android:text="@string/ready_player_one"
-                       android:textColor="@color/white"
-                       android:textSize="@dimen/text_16sp"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       android:layout_marginBottom="14dp"
-                       app:layout_constraintStart_toStartOf="@id/tv_watch_prompt"
-                       app:layout_constraintTop_toBottomOf="@id/tv_watch_prompt" />
+                    <TextView
+                        android:id="@+id/tv_current_movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_14dp"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/ready_player_one"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_watch_prompt"
+                        app:layout_constraintTop_toBottomOf="@id/tv_watch_prompt" />
 
-               </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </androidx.cardview.widget.CardView>
 
-           </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
-
-   </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_trending"
@@ -121,14 +119,12 @@
         android:id="@+id/rv_trending_movies"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_0dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_trending"
         android:layout_marginTop="@dimen/margin_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginBottom="@dimen/margin_11dp"
         android:orientation="horizontal"
-        tools:listitem="@layout/movie_poster_item"
-        android:layout_marginBottom="@dimen/margin_11dp"/>
-
-
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_trending"
+        tools:listitem="@layout/movie_poster_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
