@@ -1,13 +1,18 @@
-package com.example.streammoviesapplication
+package com.example.streammoviesapplication.presentation
 
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentHomeBinding
 import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -30,6 +35,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val fulltext = binding.tvBoldText.text.toString()
+        val spannableString = SpannableString(fulltext)
+        val redColorSpan = ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.orange_icon))
+        spannableString.setSpan(redColorSpan, 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.tvBoldText.text = spannableString
+
+
         lifecycleScope.launch {
             vm.movieState.collectLatest {
                 when {

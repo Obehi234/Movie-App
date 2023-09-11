@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/screen_bg"
     android:padding="@dimen/padding_24dp"
-    tools:context=".HomeFragment">
+    tools:context=".presentation.HomeFragment">
 
     <TextView
         android:id="@+id/tvBoldText"
