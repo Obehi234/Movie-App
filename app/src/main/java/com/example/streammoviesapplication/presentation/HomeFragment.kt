@@ -5,14 +5,13 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import coil.load
 import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentHomeBinding
 import com.example.streammoviesapplication.presentation.adapter.TrendingMoviesAdapter
@@ -24,12 +23,11 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var trendingMoviesAdapter : TrendingMoviesAdapter
+    private lateinit var trendingMoviesAdapter: TrendingMoviesAdapter
     private val vm: MovieViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -48,22 +46,6 @@ class HomeFragment : Fragment() {
 
         setUpRV()
 
-
-        lifecycleScope.launch {
-            vm.movieState.collectLatest {
-                when {
-                    it.isLoading -> {
-                        Log.d("VM_CHECK", "Loading....")
-                    }
-                    it.trendingMovies?.isNotEmpty() == true -> {
-                        Log.d("VM_CHECK", "VM works fine in Home Fragment - ${it.trendingMovies}")
-                    }
-                }
-
-
-            }
-        }
-
     }
 
     private fun setUpRV() {
@@ -72,10 +54,27 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             vm.movieState.collectLatest {
                 when {
-                    it.isLoading
+                    it.isLoading -> {
+                        showProgressbar()
+                    }
+
+                    it.trendingMovies?.isNotEmpty() == true -> {
+                        hideProgressBar()
+                        trendingMoviesAdapter.submitList(it.trendingMovies)
+                        Log.d("VM_CHECK", "VM works fine in Home Fragment - ${it.trendingMovies}")
+                    }
+
                 }
             }
         }
+    }
+
+    private fun hideProgressBar() {
+        binding.pgBar.visibility = View.GONE
+    }
+
+    private fun showProgressbar() {
+        binding.pgBar.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {
