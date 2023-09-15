@@ -31,6 +31,7 @@ class TrendingMoviesRepositoryImpl
                         trendingMoviesDao.insertTrendingMovies(trendingMovieList)
                     }
                     emit(Resource.Success(trendingMoviesDao.getAllTrendingMovies()))
+                    Log.d("CHECK_REPOSITORY", "$trendingMovieList")
                 }
 
                 is Resource.Error -> {

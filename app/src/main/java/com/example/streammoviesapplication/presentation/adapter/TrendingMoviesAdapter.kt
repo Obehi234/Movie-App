@@ -44,6 +44,6 @@ class TrendingMoviesAdapter : ListAdapter<TrendingMoviesEntity, TrendingMoviesAd
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(getItem(position))
     }
 }
