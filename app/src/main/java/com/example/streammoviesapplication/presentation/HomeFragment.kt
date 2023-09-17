@@ -1,12 +1,9 @@
 package com.example.streammoviesapplication.presentation
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,27 +16,18 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentHomeBinding
-import com.example.streammoviesapplication.presentation.adapter.MovieViewPagerAdapter
-import com.example.streammoviesapplication.presentation.adapter.TrendingMoviesAdapter
 import com.example.streammoviesapplication.presentation.adapter.TrendingViewPager
 import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.lang.Math.abs
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val vm: MovieViewModel by activityViewModels()
-
-
-    //ViewPager set up
     private lateinit var viewPager2: ViewPager2
-    private lateinit var handler: Handler
     private lateinit var vpAdapter: TrendingViewPager
 
     override fun onCreateView(
@@ -64,65 +52,45 @@ class HomeFragment : Fragment() {
         setUpTransformer()
     }
 
-    private val runnable = Runnable {
-        viewPager2.currentItem = viewPager2.currentItem + 1
-    }
-
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(40))
         transformer.addTransformer { page, position ->
-            val r = 1 - abs(position)
-            val scale = 1- (0.3f * abs(position))
+            val scale = 1 - (0.25f * kotlin.math.abs(position))
             page.scaleY = scale
-            viewPager2.setPageTransformer(transformer)
-
         }
-
+        viewPager2.setPageTransformer(transformer)
     }
+
 
     private fun setUpViewPager() {
         viewPager2 = binding.vpTrendingMovies
         vpAdapter = TrendingViewPager(emptyList(), viewPager2)
         viewPager2.adapter = vpAdapter
-        handler = Handler(Looper.myLooper()!!)
-        viewPager2.offscreenPageLimit = 2
+        viewPager2.offscreenPageLimit = 3
         viewPager2.clipToPadding = false
         viewPager2.clipChildren = false
-        viewPager2.setPadding(0, 0, 100, 0)
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         lifecycleScope.launch {
             vm.movieState.collect { state ->
                 when {
                     state.isLoading -> {
                         showProgressbar()
-                        Log.d(
-                            "VM_CHECK",
-                            "VM works fine in Home Fragment - ${state.isLoading}"
-                        )
+
                     }
 
                     state.errorMessage != null -> {
                         Toast.makeText(context, state.errorMessage, Toast.LENGTH_SHORT).show()
-                        Log.d(
-                            "VM_CHECK",
-                            "VM works fine in Home Fragment - ${state.errorMessage}"
-                        )
+
                     }
 
                     else -> {
                         hideProgressBar()
                         state.trendingMovies?.let { trendingMovies ->
-                            Log.d(
-                                "VM_CHECK",
-                                "VM works fine in Home Fragment - $trendingMovies"
-                            )
                             vpAdapter = TrendingViewPager(trendingMovies, viewPager2)
                             viewPager2.adapter = vpAdapter
-                            Log.d(
-                                "VM_CHECK",
-                                "VM works fine in Home Fragment - ${state.trendingMovies}"
-                            )
+
+
                         }
 
                     }
