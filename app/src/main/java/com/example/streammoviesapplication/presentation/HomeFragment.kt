@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         binding.tvBoldText.text = spannableString
 
         setUpViewPager()
-        setUpTransformer()
+
     }
 
     private fun setUpTransformer() {
@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
         viewPager2.clipToPadding = false
         viewPager2.clipChildren = false
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        setUpTransformer()
         lifecycleScope.launch {
             vm.movieState.collect { state ->
                 when {
