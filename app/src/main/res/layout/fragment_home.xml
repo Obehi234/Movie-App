@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/movie_banner_displaying_movie_currently_being_watched"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/mask_group" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

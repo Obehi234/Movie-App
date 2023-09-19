@@ -93,10 +93,10 @@ class HomeFragment : Fragment() {
                             viewPager2.adapter = vpAdapter
 
                             if (trendingMovies.isNotEmpty()) {
-                                val imageUrl = "https://image.tmdb.org/t/p/w500" + trendingMovies[0].poster_path
+                                val imageUrl =
+                                    "https://image.tmdb.org/t/p/w500" + trendingMovies[0].poster_path
                                 binding.imgPoster.load(imageUrl)
                             }
-
 
                         }
 
