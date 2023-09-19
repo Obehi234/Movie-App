@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import coil.load
 import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentHomeBinding
 import com.example.streammoviesapplication.presentation.adapter.TrendingViewPager
@@ -90,6 +91,11 @@ class HomeFragment : Fragment() {
                         state.trendingMovies?.let { trendingMovies ->
                             vpAdapter = TrendingViewPager(trendingMovies, viewPager2)
                             viewPager2.adapter = vpAdapter
+
+                            if (trendingMovies.isNotEmpty()) {
+                                val imageUrl = "https://image.tmdb.org/t/p/w500" + trendingMovies[0].poster_path
+                                binding.imgPoster.load(imageUrl)
+                            }
 
 
                         }
