@@ -89,6 +89,7 @@
             app:cardBackgroundColor="@color/pop_up_bg"
             app:cardCornerRadius="@dimen/radius_20dp"
             app:cardElevation="@dimen/elevation_0dp"
+            android:background="@drawable/glass_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

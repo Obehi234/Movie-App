@@ -55,9 +55,9 @@ class HomeFragment : Fragment() {
 
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
-        transformer.addTransformer(MarginPageTransformer(40))
+        transformer.addTransformer(MarginPageTransformer(10))
         transformer.addTransformer { page, position ->
-            val scale = 1 - (0.25f * kotlin.math.abs(position))
+            val scale = 1 - (0.3f * kotlin.math.abs(position))
             page.scaleY = scale
         }
         viewPager2.setPageTransformer(transformer)
@@ -72,6 +72,7 @@ class HomeFragment : Fragment() {
         viewPager2.clipToPadding = false
         viewPager2.clipChildren = false
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        viewPager2.setPadding(120, 0, 60, 0)
         setUpTransformer()
         lifecycleScope.launch {
             vm.movieState.collect { state ->
