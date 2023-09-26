@@ -10,4 +10,9 @@
         android:name="com.example.streammoviesapplication.presentation.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/searchMoviesFragment"
+        android:name="com.example.streammoviesapplication.SearchMoviesFragment"
+        android:label="fragment_search_movies"
+        tools:layout="@layout/fragment_search_movies" />
 </navigation>
