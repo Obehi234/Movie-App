@@ -1,4 +1,4 @@
-package com.example.streammoviesapplication.presentation
+package com.example.streammoviesapplication.presentation.navFragments
 
 import android.os.Bundle
 import android.text.Spannable

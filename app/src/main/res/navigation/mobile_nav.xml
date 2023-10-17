@@ -7,12 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.streammoviesapplication.presentation.HomeFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/searchMoviesFragment"
-        android:name="com.example.streammoviesapplication.SearchMoviesFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.SearchMoviesFragment"
         android:label="fragment_search_movies"
         tools:layout="@layout/fragment_search_movies" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.ProfileFragment"
+        android:label="fragment_profile2"
+        tools:layout="@layout/fragment_profile2" />
 </navigation>
