@@ -42,4 +42,5 @@
     <dimen name="margin_15dp">15dp</dimen>
     <dimen name="margin_46dp">46dp</dimen>
     <dimen name="padding_14dp">14dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
 </resources>
