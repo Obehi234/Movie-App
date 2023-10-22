@@ -43,4 +43,12 @@
     <dimen name="margin_46dp">46dp</dimen>
     <dimen name="padding_14dp">14dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="tab_end_30dp">30dp</dimen>
+    <dimen name="radius_5dp">5dp</dimen>
+    <dimen name="tab_end_10dp">10dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="indicator_height_3dp">3dp</dimen>
+    <dimen name="indicator_width_19dp">19dp</dimen>
+    <dimen name="indicator_height_2dp">2dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
 </resources>

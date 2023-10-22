@@ -14,5 +14,6 @@
     <color name="pop_up_bg">#4DDADADA</color>
     <color name="prompt_color">#BCBCBC</color>
     <color name="dark_grey">#5a5a5a</color>
+    <color name="viewpager_bg">#00a294</color>
 
 </resources>
