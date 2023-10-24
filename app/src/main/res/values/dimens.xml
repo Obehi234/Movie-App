@@ -36,4 +36,19 @@
     <dimen name="height_296dp">296dp</dimen>
     <dimen name="width_224dp">224dp</dimen>
     <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="padding_60dp">60dp</dimen>
+    <dimen name="padding_40dp">40dp</dimen>
+    <dimen name="padding_30dp">30dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="margin_46dp">46dp</dimen>
+    <dimen name="padding_14dp">14dp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="tab_end_30dp">30dp</dimen>
+    <dimen name="radius_5dp">5dp</dimen>
+    <dimen name="tab_end_10dp">10dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="indicator_height_3dp">3dp</dimen>
+    <dimen name="indicator_width_19dp">19dp</dimen>
+    <dimen name="indicator_height_2dp">2dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
 </resources>

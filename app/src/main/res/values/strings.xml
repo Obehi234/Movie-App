@@ -15,4 +15,5 @@
     <string name="imdb">IMDb</string>
     <string name="_7_0">7.0</string>
     <string name="star_wars_the_last_jedi">Star Wars: The Last Jedi</string>
+    <string name="icon_showing_movie_rating">icon showing movie rating</string>
 </resources>
