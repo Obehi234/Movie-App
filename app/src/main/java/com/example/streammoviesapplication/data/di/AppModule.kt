@@ -5,7 +5,9 @@ import androidx.room.Room
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
+import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
+import com.example.streammoviesapplication.data.repository.MoviesTabRepositoryImpl
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepositoryImpl
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
@@ -97,6 +99,15 @@ object AppModule {
         trendingMoviesDao: TrendingMoviesDao
     ): ITrendingMoviesRepository {
         return TrendingMoviesRepositoryImpl(api, trendingMoviesDao)
+    }
+
+    @Singleton
+    @Provides
+    fun providesMovieListRepository(
+        api: MovieService,
+        movieListDao: MovieListDao
+    ): IMoviesTabRepository {
+        return MoviesTabRepositoryImpl(api, movieListDao)
     }
 
 }
