@@ -1,6 +1,6 @@
 package com.example.streammoviesapplication.network
 
-import com.example.streammoviesapplication.data.model.remoteData.MovieListResponse
+import com.example.streammoviesapplication.data.model.remoteData.NewMovieListResponse
 import com.example.streammoviesapplication.data.model.remoteData.TrendingMoviesResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,6 +13,6 @@ interface MovieService {
     ) : Response<TrendingMoviesResponse>
 
     @GET("/3/movie/2/lists")
-    suspend fun getMovieList( @Path("id") id: Int ) : Response<MovieListResponse>
+    suspend fun getMovieList( @Path("id") id: Int ) : Response<NewMovieListResponse>
 }
 

@@ -5,7 +5,7 @@ import android.util.Log
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.network.MovieService
-import com.example.streammoviesapplication.utils.MovieMapper
+import com.example.streammoviesapplication.data.model.mapper.MovieMapper
 import com.example.streammoviesapplication.utils.resource.Resource
 import com.example.streammoviesapplication.utils.resource.safeApiCall
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +16,7 @@ class TrendingMoviesRepositoryImpl
 @Inject constructor(
     private val api: MovieService,
     private val trendingMoviesDao: TrendingMoviesDao
-): TrendingMoviesRepository {
+): ITrendingMoviesRepository {
 
     override suspend fun fetchTrendingMovies(): Flow<Resource<List<TrendingMoviesEntity>>>{
 

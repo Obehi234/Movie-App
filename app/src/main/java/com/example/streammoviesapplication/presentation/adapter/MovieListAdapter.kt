@@ -1,4 +1,4 @@
-package com.example.streammoviesapplication.presentation.tabAdapters
+package com.example.streammoviesapplication.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,29 +9,31 @@ import coil.load
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.MovieListItemBinding
 
+class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
 
-class MovieListAdapter() : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
-
-    inner class MovieListViewHolder(private val binding : MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieListViewHolder(private val binding:MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
-
             binding.apply{
                 movieCardBg.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
-                movieTv.text = item.title
+                movieTv.text = item.original_title
             }
 
 
         }
     }
 
-    class MovieListDiffUtilCallback : DiffUtil.ItemCallback<MovieResultEntity>() {
+    class MovieDiffUtilCallback : DiffUtil.ItemCallback<MovieResultEntity>() {
         override fun areItemsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
+        override fun areContentsTheSame(
+            oldItem: MovieResultEntity,
+            newItem: MovieResultEntity
+        ): Boolean {
             return oldItem == newItem
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {

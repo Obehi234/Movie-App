@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.model.localData.MovieViewState
-import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
+import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
 import com.example.streammoviesapplication.utils.resource.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val repository: TrendingMoviesRepository
+    private val repository: ITrendingMoviesRepository
 ): ViewModel() {
 
     private var _movieState = MutableStateFlow(MovieViewState())

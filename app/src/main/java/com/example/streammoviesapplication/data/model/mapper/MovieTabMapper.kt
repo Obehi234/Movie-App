@@ -1,17 +1,16 @@
-package com.example.streammoviesapplication.utils
+package com.example.streammoviesapplication.data.model.mapper
 
-import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
-import com.example.streammoviesapplication.data.model.remoteData.TrendingMovies
+import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
+import com.example.streammoviesapplication.data.model.remoteData.MovieResult
 
-object MovieMapper {
+object MovieTabMapper {
 
-    fun mapRemoteToEntity(remote: TrendingMovies) : TrendingMoviesEntity {
-        return TrendingMoviesEntity(
+    fun mapRemoteTabToTabEntity(remote: MovieResult) : MovieResultEntity {
+        return MovieResultEntity(
             id = remote.id,
             adult = remote.adult,
             backdrop_path = remote.backdrop_path,
             genre_ids = remote.genre_ids,
-            media_type = remote.media_type,
             original_language = remote.original_language,
             original_title = remote.original_title,
             overview = remote.overview,

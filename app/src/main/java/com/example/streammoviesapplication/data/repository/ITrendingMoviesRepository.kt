@@ -4,7 +4,7 @@ import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEn
 import com.example.streammoviesapplication.utils.resource.Resource
 import kotlinx.coroutines.flow.Flow
 
-interface TrendingMoviesRepository{
+interface ITrendingMoviesRepository{
     suspend fun fetchTrendingMovies(): Flow<Resource<List<TrendingMoviesEntity>>>
 
 }
