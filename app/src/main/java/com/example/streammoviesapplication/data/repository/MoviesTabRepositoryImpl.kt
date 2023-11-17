@@ -16,29 +16,36 @@ class MoviesTabRepositoryImpl
     private val api: MovieService,
     private val movieTabDao: MovieListDao
 ): IMoviesTabRepository {
-    override suspend fun fetchMoviesListTab(id: Int): Flow<Resource<List<MovieResultEntity>>> {
+    override suspend fun fetchMoviesListTab(): Flow<Resource<List<MovieResultEntity>>> {
         return flow {
-            when(val response = safeApiCall {  api.getMovieList(id)}) {
+            when(val response = safeApiCall {  api.getMovieList()}) {
                 is Resource.Success -> {
                     val movieTabResult = response.data?.results
                     val movieTabList = movieTabResult?.map { result ->
+                        Log.d("CHECK_REPOSITORY", "$movieTabResult")
                         MovieTabMapper.mapRemoteTabToTabEntity(result)
+
                     }
 
                     if(movieTabList != null) {
+                        Log.d("CHECK_REPOSITORY", "$movieTabResult")
+
                         movieTabDao.insertMovieList(movieTabList)
                     }
                     emit(Resource.Success(movieTabDao.getAllMovies()))
-                    Log.d("CHECK_REPOSITORY", "$movieTabList")
+
                 }
                 is Resource.Error -> {
                     emit(Resource.Error("${response.message}"))
-                    Log.d("CHECK_DB", "Database Insertion Failed - ${response.message}")
+
                 }
 
                 is Resource.Loading -> {
                     emit(Resource.Loading())
                     Log.d("CHECK_LOADING", "Data Loading, please wait...")
+                }
+                else ->{
+                    Log.d("CHECK_ELSE", "I'M INSIDE THE ELSE BLOCK")
                 }
             }
         }

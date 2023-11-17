@@ -31,17 +31,14 @@ class TrendingMoviesRepositoryImpl
                         trendingMoviesDao.insertTrendingMovies(trendingMovieList)
                     }
                     emit(Resource.Success(trendingMoviesDao.getAllTrendingMovies()))
-                    Log.d("CHECK_REPOSITORY", "$trendingMovieList")
                 }
 
                 is Resource.Error -> {
                     emit(Resource.Error("${response.message}"))
-                    Log.d("CHECK_DB", "Database Insertion Failed - ${response.message}")
                 }
 
                 is Resource.Loading -> {
                     emit(Resource.Loading())
-                    Log.d("CHECK_LOADING", "Data Loading, please wait...")
                 }
             }
         }

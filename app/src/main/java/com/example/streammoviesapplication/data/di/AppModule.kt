@@ -88,6 +88,7 @@ object AppModule {
         return database.movieListDao()
     }
 
+
     @Singleton
     @Provides
     fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO

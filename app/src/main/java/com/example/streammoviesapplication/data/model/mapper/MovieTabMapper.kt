@@ -1,11 +1,11 @@
 package com.example.streammoviesapplication.data.model.mapper
 
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
-import com.example.streammoviesapplication.data.model.remoteData.MovieResult
+import com.example.streammoviesapplication.data.model.remoteData.MovieList
 
 object MovieTabMapper {
 
-    fun mapRemoteTabToTabEntity(remote: MovieResult) : MovieResultEntity {
+    fun mapRemoteTabToTabEntity(remote: MovieList) : MovieResultEntity {
         return MovieResultEntity(
             id = remote.id,
             adult = remote.adult,

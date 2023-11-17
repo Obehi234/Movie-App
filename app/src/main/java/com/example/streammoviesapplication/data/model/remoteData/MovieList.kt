@@ -1,12 +1,10 @@
 package com.example.streammoviesapplication.data.model.remoteData
 
-import androidx.room.PrimaryKey
-
-data class MovieResult(
-    val id: Int,
+data class MovieList(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
+    val id: Int,
     val original_language: String,
     val original_title: String,
     val overview: String,

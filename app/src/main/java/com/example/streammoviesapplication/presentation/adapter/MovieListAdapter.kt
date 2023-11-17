@@ -1,5 +1,6 @@
 package com.example.streammoviesapplication.presentation.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,7 +19,6 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
                 movieTv.text = item.original_title
             }
 
-
         }
     }
 
@@ -33,7 +33,6 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
         ): Boolean {
             return oldItem == newItem
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
@@ -43,6 +42,7 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
+        Log.d("CHECK_VIEWHOLDER", "I'M IN VIEWHOLDER")
         holder.bind(getItem(position))
     }
 }
