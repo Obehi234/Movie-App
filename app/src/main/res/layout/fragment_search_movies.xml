@@ -6,7 +6,7 @@
     android:padding="@dimen/padding_24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screen_bg"
-    tools:context=".presentation.navFragments.SearchMoviesFragment">
+    tools:context=".presentation.navFragments.ExploreMoviesFragment">
 
     <TextView
         android:id="@+id/tvFindMovies"

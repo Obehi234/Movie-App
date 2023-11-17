@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/play"
-        android:name="com.example.streammoviesapplication.presentation.navFragments.SearchMoviesFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.ExploreMoviesFragment"
         android:label="fragment_search_movies"
         tools:layout="@layout/fragment_search_movies" >
         <action
