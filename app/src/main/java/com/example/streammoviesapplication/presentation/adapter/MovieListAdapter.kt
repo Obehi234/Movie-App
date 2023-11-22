@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.Glide
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
-import com.example.streammoviesapplication.databinding.MovieListItemBinding
+import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
+
 
 class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
 
-    inner class MovieListViewHolder(private val binding:MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieListViewHolder(private val binding:MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
             binding.apply{
                 movieCardBg.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
@@ -38,7 +38,7 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = MovieListItemBinding.inflate(inflater, parent, false)
+        val binding = MovieTabRecyclerItemBinding.inflate(inflater, parent, false)
         return MovieListViewHolder(binding)
     }
 

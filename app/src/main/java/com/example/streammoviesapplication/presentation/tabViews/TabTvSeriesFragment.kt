@@ -14,7 +14,7 @@ class TabTvSeriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tv_series, container, false)
+        return inflater.inflate(R.layout.fragment_tv_series_tab, container, false)
     }
 
 

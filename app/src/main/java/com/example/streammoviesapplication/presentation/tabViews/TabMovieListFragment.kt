@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.streammoviesapplication.databinding.FragmentMoviesBinding
+import com.example.streammoviesapplication.databinding.FragmentMoviesTabBinding
 import com.example.streammoviesapplication.presentation.adapter.MovieListAdapter
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
 class TabMovieListFragment : Fragment() {
-    private var _binding: FragmentMoviesBinding? = null
+    private var _binding: FragmentMoviesTabBinding? = null
     private val binding get() = _binding!!
     private val vm:TabViewModel by activityViewModels()
     private lateinit var tabMovieAdapter: MovieListAdapter
@@ -24,7 +24,7 @@ class TabMovieListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentMoviesTabBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

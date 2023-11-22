@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
-import com.example.streammoviesapplication.databinding.MovieListItemBinding
+import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
 
 
 class MovieListAdapter() : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
 
-    inner class MovieListViewHolder(private val binding : MovieListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieListViewHolder(private val binding : MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
 
             binding.apply{
@@ -36,7 +36,7 @@ class MovieListAdapter() : ListAdapter<MovieResultEntity, MovieListAdapter.Movie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = MovieListItemBinding.inflate(inflater, parent, false)
+        val binding = MovieTabRecyclerItemBinding.inflate(inflater, parent, false)
         return MovieListViewHolder(binding)
     }
 

@@ -12,7 +12,7 @@ class TabSportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sport, container, false)
+        return inflater.inflate(R.layout.fragment_sports_tab, container, false)
     }
 
 }

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.streammoviesapplication.databinding.FragmentSearchMoviesBinding
+import com.example.streammoviesapplication.databinding.FragmentMoviesCategoryNavBinding
 import com.example.streammoviesapplication.presentation.tabViews.TabDocumentaryFragment
 import com.example.streammoviesapplication.presentation.tabViews.TabMovieListFragment
 import com.example.streammoviesapplication.presentation.tabViews.TabSportFragment
@@ -13,15 +13,15 @@ import com.example.streammoviesapplication.presentation.tabViews.TabTvSeriesFrag
 import com.example.streammoviesapplication.presentation.vpAdapter.ViewPagerAdapter
 
 
-class ExploreMoviesFragment : Fragment() {
-    private var _binding: FragmentSearchMoviesBinding ?= null
+class MoviesCategoryFragment : Fragment() {
+    private var _binding: FragmentMoviesCategoryNavBinding ?= null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSearchMoviesBinding.inflate(inflater, container, false)
+        _binding = FragmentMoviesCategoryNavBinding.inflate(inflater, container, false)
         return binding.root
     }
 
