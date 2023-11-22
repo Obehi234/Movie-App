@@ -70,7 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_0dp"
         android:layout_marginTop="@dimen/margin_4dp"
-        android:background="@color/viewpager_bg"
         app:tabTextColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

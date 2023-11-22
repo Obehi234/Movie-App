@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.bumptech.glide.Glide
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.MovieListItemBinding
 

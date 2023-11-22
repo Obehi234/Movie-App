@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.streammoviesapplication.data.model.localData.result
 import com.example.streammoviesapplication.databinding.FragmentMoviesBinding
 import com.example.streammoviesapplication.presentation.adapter.MovieListAdapter
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
@@ -24,8 +23,8 @@ class MoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMoviesBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentMoviesBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -46,7 +45,7 @@ class MoviesFragment : Fragment() {
                     binding.recyclerMovies.apply{
                         adapter = tabMovieAdapter
                     }
-                    tabMovieAdapter.submitList(result)
+                    tabMovieAdapter.submitList(resource.data)
                 }
 
                 is Resource.Error -> {
@@ -68,11 +67,11 @@ class MoviesFragment : Fragment() {
     }
 
     private fun hideProgressbar() {
-        //binding.movieListPgBar.visibility = View.GONE
+        binding.movieListPgBar.visibility = View.GONE
     }
 
     private fun showProgressbar() {
-        //binding.movieListPgBar.visibility = View.VISIBLE
+        binding.movieListPgBar.visibility = View.VISIBLE
     }
 
 }

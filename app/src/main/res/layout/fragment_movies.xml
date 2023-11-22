@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/dark_grey"
     tools:context=".presentation.tabViews.MoviesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@
         android:layout_height="@dimen/height_0dp"
         android:layout_marginTop="@dimen/margin_20dp"
         android:labelFor="@id/recycler_movies"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
