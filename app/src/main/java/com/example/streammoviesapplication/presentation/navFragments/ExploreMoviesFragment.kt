@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.streammoviesapplication.databinding.FragmentSearchMoviesBinding
-import com.example.streammoviesapplication.presentation.tabViews.DocumentaryFragment
-import com.example.streammoviesapplication.presentation.tabViews.MoviesFragment
-import com.example.streammoviesapplication.presentation.tabViews.SportFragment
-import com.example.streammoviesapplication.presentation.tabViews.TvSeriesFragment
+import com.example.streammoviesapplication.presentation.tabViews.TabDocumentaryFragment
+import com.example.streammoviesapplication.presentation.tabViews.TabMovieListFragment
+import com.example.streammoviesapplication.presentation.tabViews.TabSportFragment
+import com.example.streammoviesapplication.presentation.tabViews.TabTvSeriesFragment
 import com.example.streammoviesapplication.presentation.vpAdapter.ViewPagerAdapter
 
 
@@ -30,10 +30,10 @@ class ExploreMoviesFragment : Fragment() {
 
 
         val adapter = ViewPagerAdapter(childFragmentManager)
-        adapter.addFragment(MoviesFragment(), "Movies")
-        adapter.addFragment(TvSeriesFragment(), "TvSeries")
-        adapter.addFragment(DocumentaryFragment(), "Documentary")
-        adapter.addFragment(SportFragment(), "Sports")
+        adapter.addFragment(TabMovieListFragment(), "Movies")
+        adapter.addFragment(TabTvSeriesFragment(), "TvSeries")
+        adapter.addFragment(TabDocumentaryFragment(), "Documentary")
+        adapter.addFragment(TabSportFragment(), "Sports")
 
         binding.vpSearch.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.vpSearch)

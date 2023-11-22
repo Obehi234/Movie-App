@@ -13,7 +13,7 @@ import com.example.streammoviesapplication.presentation.adapter.MovieListAdapter
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
-class MoviesFragment : Fragment() {
+class TabMovieListFragment : Fragment() {
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
     private val vm:TabViewModel by activityViewModels()

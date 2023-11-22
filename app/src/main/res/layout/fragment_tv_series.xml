@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_200"
-    tools:context=".presentation.tabViews.TvSeriesFragment">
+    tools:context=".presentation.tabViews.TabTvSeriesFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
