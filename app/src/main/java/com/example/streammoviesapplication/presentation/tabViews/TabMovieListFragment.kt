@@ -1,7 +1,6 @@
 package com.example.streammoviesapplication.presentation.tabViews
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,6 @@ class TabMovieListFragment : Fragment() {
         vm.moviesTabLiveData.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Success -> {
-                    Log.d("CHECK_RESULT", "${resource.data}")
                     hideProgressbar()
                     binding.recyclerMovies.apply{
                         adapter = tabMovieAdapter
@@ -50,7 +48,6 @@ class TabMovieListFragment : Fragment() {
 
                 is Resource.Error -> {
                     Toast.makeText(context, "${resource.message}", Toast.LENGTH_LONG).show()
-                    Log.d("CHECK_TOAST", "${resource.message}")
                 }
 
                 is Resource.Loading -> {
@@ -58,7 +55,7 @@ class TabMovieListFragment : Fragment() {
                 }
 
                 else -> {
-                    Log.d("CHECK_ELSE", "I'M IN ELSE")
+
                 }
             }
         }
