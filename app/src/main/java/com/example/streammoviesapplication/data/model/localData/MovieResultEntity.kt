@@ -23,17 +23,4 @@ data class MovieResultEntity(
     val vote_count: Int? = 0
 )
 
-val result = listOf(
-    MovieResultEntity(
-        title = "Aladinn",
-        id = 0
-    ),
-    MovieResultEntity(
-        title = "Sleeping Beauty",
-        id = 1
-    ),
-    MovieResultEntity(
-        title = "Queen Bee",
-        id = 2
-    )
-)
+
