@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.databinding.HomeNavMoviePosterItemBinding
+import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
 class TrendingViewPager (private val imageList : List<TrendingMoviesEntity>, private val viewPager2: ViewPager2)
@@ -15,7 +16,7 @@ class TrendingViewPager (private val imageList : List<TrendingMoviesEntity>, pri
     class CardViewHolder(val binding: HomeNavMoviePosterItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TrendingMoviesEntity) {
             binding.apply{
-                ivPoster.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
+                ivPoster.load(BASE_IMAGE_URL + item.poster_path)
                 tvRatingNumber.text = item.vote_average.toString()
                 tvMovieName.text = item.title
             }
