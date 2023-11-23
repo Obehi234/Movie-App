@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
+import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
 class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
@@ -15,7 +16,7 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
     inner class MovieListViewHolder(private val binding:MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
             binding.apply{
-                movieCardBg.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
+                movieCardBg.load(BASE_IMAGE_URL + item.poster_path)
                 movieTv.text = item.original_title
             }
 
