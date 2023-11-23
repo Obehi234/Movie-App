@@ -1,6 +1,5 @@
 package com.example.streammoviesapplication.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -43,7 +42,6 @@ class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieLis
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        Log.d("CHECK_VIEWHOLDER", "I'M IN VIEWHOLDER")
         holder.bind(getItem(position))
     }
 }
