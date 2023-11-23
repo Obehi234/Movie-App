@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/movie_card_bg"
-            android:layout_width="154dp"
-            android:layout_height="184dp"
+            android:layout_width="@dimen/img_width_154dp"
+            android:layout_height="@dimen/img_height_184dp"
             android:scaleType="centerCrop"
             android:src="@drawable/poster"/>
     </androidx.cardview.widget.CardView>
