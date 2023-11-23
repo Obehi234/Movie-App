@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.databinding.HomeNavMoviePosterItemBinding
+import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
 class TrendingMoviesAdapter : ListAdapter<TrendingMoviesEntity, TrendingMoviesAdapter.MovieViewHolder>(DiffUtilCallback()){
@@ -15,7 +16,7 @@ class TrendingMoviesAdapter : ListAdapter<TrendingMoviesEntity, TrendingMoviesAd
     inner class MovieViewHolder(private val binding: HomeNavMoviePosterItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TrendingMoviesEntity) {
             binding.apply{
-                ivPoster.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
+                ivPoster.load(BASE_IMAGE_URL + item.poster_path)
                 tvRatingNumber.text = item.vote_average.toString()
                 tvMovieName.text = item.title
             }
