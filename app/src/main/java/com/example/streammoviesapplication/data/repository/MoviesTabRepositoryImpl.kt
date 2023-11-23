@@ -1,6 +1,5 @@
 package com.example.streammoviesapplication.data.repository
 
-import android.util.Log
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.mapper.MovieTabMapper
@@ -22,13 +21,11 @@ class MoviesTabRepositoryImpl
                 is Resource.Success -> {
                     val movieTabResult = response.data?.results
                     val movieTabList = movieTabResult?.map { result ->
-                        Log.d("CHECK_REPOSITORY", "$movieTabResult")
                         MovieTabMapper.mapRemoteTabToTabEntity(result)
 
                     }
 
                     if(movieTabList != null) {
-                        Log.d("CHECK_REPOSITORY", "$movieTabResult")
 
                         movieTabDao.insertMovieList(movieTabList)
                     }
@@ -42,11 +39,8 @@ class MoviesTabRepositoryImpl
 
                 is Resource.Loading -> {
                     emit(Resource.Loading())
-                    Log.d("CHECK_LOADING", "Data Loading, please wait...")
                 }
-                else ->{
-                    Log.d("CHECK_ELSE", "I'M INSIDE THE ELSE BLOCK")
-                }
+
             }
         }
     }
