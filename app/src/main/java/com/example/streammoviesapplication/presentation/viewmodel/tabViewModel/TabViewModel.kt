@@ -26,7 +26,6 @@ class TabViewModel @Inject constructor(
         fetchTabMovies()
     }
      fun fetchTabMovies() {
-         Log.d("CHECK_TAB","")
         viewModelScope.launch {
             _moviesTabLiveData.value = Resource.Loading()
             try {
@@ -34,11 +33,10 @@ class TabViewModel @Inject constructor(
                      when(result){
                          is Resource.Success -> {
                              _moviesTabLiveData.value = Resource.Success(result.data)
-                             Log.d("CHECK_VM_RESULT", "${result.data}")
                          }
 
                          is Resource.Error -> {
-                             Log.d("CHECK ERROR IN VM", "DATA DISPLAY ERROR")
+                             showError()
                          }
 
                          else -> {
@@ -54,6 +52,10 @@ class TabViewModel @Inject constructor(
                 _moviesTabLiveData.value = Resource.Error(e.localizedMessage ?: "An error occurred")
             }
         }
+    }
+
+    private fun showError() {
+        Log.d("CHECK_ERROR", "NOT SET")
     }
 
 }
