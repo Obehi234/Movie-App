@@ -18,14 +18,14 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.streammoviesapplication.R
-import com.example.streammoviesapplication.databinding.FragmentHomeBinding
+import com.example.streammoviesapplication.databinding.FragmentHomeNavBinding
 import com.example.streammoviesapplication.presentation.adapter.TrendingViewPager
 import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeNavBinding? = null
     private val binding get() = _binding!!
     private val vm: MovieViewModel by activityViewModels()
     private lateinit var viewPager2: ViewPager2
@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeNavBinding.inflate(inflater, container, false)
         return binding.root
     }
 

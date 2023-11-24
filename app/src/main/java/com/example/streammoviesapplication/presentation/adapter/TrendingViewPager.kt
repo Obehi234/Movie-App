@@ -6,15 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
-import com.example.streammoviesapplication.databinding.MoviePosterItemBinding
+import com.example.streammoviesapplication.databinding.HomeNavMoviePosterItemBinding
+import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
+
 
 class TrendingViewPager (private val imageList : List<TrendingMoviesEntity>, private val viewPager2: ViewPager2)
     : RecyclerView.Adapter<TrendingViewPager.CardViewHolder>(){
 
-    class CardViewHolder(val binding: MoviePosterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CardViewHolder(val binding: HomeNavMoviePosterItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TrendingMoviesEntity) {
             binding.apply{
-                ivPoster.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
+                ivPoster.load(BASE_IMAGE_URL + item.poster_path)
                 tvRatingNumber.text = item.vote_average.toString()
                 tvMovieName.text = item.title
             }
@@ -23,7 +25,7 @@ class TrendingViewPager (private val imageList : List<TrendingMoviesEntity>, pri
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = MoviePosterItemBinding.inflate(inflater, parent, false)
+        val binding = HomeNavMoviePosterItemBinding.inflate(inflater, parent, false)
         return CardViewHolder(binding)
     }
 

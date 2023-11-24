@@ -2,9 +2,12 @@ package com.example.streammoviesapplication.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
-import com.example.streammoviesapplication.data.repository.TrendingMoviesRepository
+import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
+import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
+import com.example.streammoviesapplication.data.repository.MoviesTabRepositoryImpl
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepositoryImpl
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
@@ -81,6 +84,13 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun providesMovieListDao(database: MoviesDatabase) : MovieListDao {
+        return database.movieListDao()
+    }
+
+
+    @Singleton
+    @Provides
     fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @Singleton
@@ -88,8 +98,17 @@ object AppModule {
     fun provideTrendingMoviesRepository(
         api: MovieService,
         trendingMoviesDao: TrendingMoviesDao
-    ): TrendingMoviesRepository {
+    ): ITrendingMoviesRepository {
         return TrendingMoviesRepositoryImpl(api, trendingMoviesDao)
+    }
+
+    @Singleton
+    @Provides
+    fun providesMovieListRepository(
+        api: MovieService,
+        movieListDao: MovieListDao
+    ): IMoviesTabRepository {
+        return MoviesTabRepositoryImpl(api, movieListDao)
     }
 
 }
