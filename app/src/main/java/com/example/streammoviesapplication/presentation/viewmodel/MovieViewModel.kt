@@ -32,8 +32,7 @@ class MovieViewModel @Inject constructor(
                     when(result) {
                         is Resource.Success -> {
                             _movieState.update { it.copy(isLoading = false, trendingMovies = result.data) }
-                            Log.d("VIEWMODEl_check in Viewmodel", "Viewmodel result 1 - ${result.data}")
-                            Log.d("VIEWMODEl_check in Viewmodel", "Viewmodel result 2- ${movieState.value.trendingMovies}")
+
                         }
 
                         is Resource.Error -> {
