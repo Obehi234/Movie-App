@@ -56,4 +56,6 @@
     <dimen name="image_width_287dp">287dp</dimen>
     <dimen name="padding_12dp">12dp</dimen>
     <dimen name="clock_dimen_24dp">24dp</dimen>
+    <dimen name="margin_19dp">19dp</dimen>
+    <dimen name="margin_56dp">56dp</dimen>
 </resources>
