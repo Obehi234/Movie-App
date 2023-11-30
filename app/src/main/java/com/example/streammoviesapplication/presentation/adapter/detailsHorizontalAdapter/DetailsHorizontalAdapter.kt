@@ -12,9 +12,10 @@ class DetailsHorizontalAdapter: ListAdapter<Result, DetailsHorizontalAdapter.Det
 
     }
 
-    class DetailsDiffUtilCallback: DiffUtil.ItemCallback<Result>(){
+    class DetailsDiffUtilCallback {
 
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsViewHolder {
         TODO("Not yet implemented")
@@ -26,5 +27,7 @@ class DetailsHorizontalAdapter: ListAdapter<Result, DetailsHorizontalAdapter.Det
 
 
 }
+
+
 
 
