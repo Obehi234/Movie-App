@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/ivTabDetails"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:scaleType="fitXY"
             android:src="@drawable/assetimg" />
 
@@ -235,7 +235,7 @@
         android:layout_marginStart="@dimen/margin_12dp"
         android:layout_marginTop="@dimen/margin_12dp"
         android:fontFamily="@font/lato"
-        android:padding="@dimen/padding_12dp"
+        android:padding="@dimen/padding_6dp"
         android:text="Rey (Daisy Ridley) finally manages to find the legendary Jedi knight,
          Luke Skywalker (Mark Hamill) on an island with a magical aura. The heroes of The Force Awakens including Leia, Finn Read more.."
         android:textColor="#BCBCBC"
@@ -261,6 +261,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_12dp"
         android:scrollbars="horizontal"
         tools:listitem="@layout/item_movie_details"
         app:layout_constraintStart_toStartOf="@id/relatedMovies_title"

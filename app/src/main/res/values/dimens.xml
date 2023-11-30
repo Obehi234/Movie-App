@@ -58,4 +58,5 @@
     <dimen name="clock_dimen_24dp">24dp</dimen>
     <dimen name="margin_19dp">19dp</dimen>
     <dimen name="margin_56dp">56dp</dimen>
+    <dimen name="padding_6dp">6dp</dimen>
 </resources>
