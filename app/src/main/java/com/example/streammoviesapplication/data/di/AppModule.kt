@@ -2,6 +2,7 @@ package com.example.streammoviesapplication.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
@@ -86,6 +87,12 @@ object AppModule {
     @Provides
     fun providesMovieListDao(database: MoviesDatabase) : MovieListDao {
         return database.movieListDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailsDao(database: MoviesDatabase) {
+        database.movieDetailsDao()
     }
 
 
