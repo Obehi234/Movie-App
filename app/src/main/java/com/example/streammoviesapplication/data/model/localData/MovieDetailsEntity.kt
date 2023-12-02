@@ -13,7 +13,6 @@ import com.example.streammoviesapplication.utils.Constants
 data class MovieDetailsEntity(
     val adult: Boolean,
     val backdrop_path: String,
-    val belongs_to_collection: Any,
     val budget: Int,
     val genres: List<Genre>,
     val homepage: String,
@@ -25,8 +24,6 @@ data class MovieDetailsEntity(
     val overview: String,
     val popularity: Double,
     val poster_path: String,
-    val production_companies: List<ProductionCompany>,
-    val production_countries: List<ProductionCountry>,
     val release_date: String,
     val revenue: Int,
     val runtime: Int,
@@ -36,5 +33,6 @@ data class MovieDetailsEntity(
     val title: String,
     val video: Boolean,
     val vote_average: Double,
-    val vote_count: Int
+    val vote_count: Int,
+
 )

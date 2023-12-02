@@ -14,7 +14,7 @@ import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEn
         MovieDetailsEntity::class
     ], version = 1, exportSchema = false
 )
-@TypeConverters(ListTypeConverter::class)
+@TypeConverters(ListTypeConverter::class, GenreTypeConverter::class)
 abstract class MoviesDatabase : RoomDatabase() {
     abstract fun trendingMoviesDao(): TrendingMoviesDao
     abstract fun movieListDao(): MovieListDao

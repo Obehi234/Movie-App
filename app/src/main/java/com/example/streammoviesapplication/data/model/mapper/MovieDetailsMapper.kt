@@ -8,7 +8,6 @@ object MovieDetailsMapper {
         return MovieDetailsEntity(
             adult = remote.adult,
             backdrop_path = remote.backdrop_path,
-            belongs_to_collection = remote.belongs_to_collection,
             budget = remote.budget,
             genres = remote.genres,
             homepage = remote.homepage,
@@ -19,8 +18,6 @@ object MovieDetailsMapper {
             overview = remote.overview,
             popularity = remote.popularity,
             poster_path = remote.poster_path,
-            production_companies = remote.production_companies ,
-            production_countries = remote.production_countries,
             release_date = remote.release_date,
             revenue = remote.revenue,
             runtime = remote.runtime,
