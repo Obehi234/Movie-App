@@ -21,7 +21,6 @@ object MovieDetailsMapper {
             release_date = remote.release_date,
             revenue = remote.revenue,
             runtime = remote.runtime,
-            spoken_languages = remote.spoken_languages,
             status = remote.status,
             tagline = remote.tagline,
             title = remote.title,

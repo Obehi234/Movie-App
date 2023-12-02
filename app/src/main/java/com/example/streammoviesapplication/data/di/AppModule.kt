@@ -91,8 +91,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMovieDetailsDao(database: MoviesDatabase) {
-        database.movieDetailsDao()
+    fun provideMovieDetailsDao(database: MoviesDatabase): MovieDetailsDao {
+        return database.movieDetailsDao()
     }
 
 

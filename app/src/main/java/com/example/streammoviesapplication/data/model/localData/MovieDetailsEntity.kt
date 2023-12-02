@@ -2,6 +2,8 @@ package com.example.streammoviesapplication.data.model.localData
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.streammoviesapplication.data.db.GenreTypeConverter
 import com.example.streammoviesapplication.data.model.remoteData.movieDetails.Genre
 import com.example.streammoviesapplication.data.model.remoteData.movieDetails.ProductionCompany
 import com.example.streammoviesapplication.data.model.remoteData.movieDetails.ProductionCountry
@@ -27,7 +29,6 @@ data class MovieDetailsEntity(
     val release_date: String,
     val revenue: Int,
     val runtime: Int,
-    val spoken_languages: List<SpokenLanguage>,
     val status: String,
     val tagline: String,
     val title: String,
@@ -35,4 +36,4 @@ data class MovieDetailsEntity(
     val vote_average: Double,
     val vote_count: Int,
 
-)
+    )

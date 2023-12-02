@@ -7,11 +7,11 @@ import com.google.gson.reflect.TypeToken
 
 class GenreTypeConverter {
     @TypeConverter
-    fun convertGenreToString(genre: Genre?): String? = Gson().toJson(genre)
+    fun convertGenreListToString(genreList: List<Genre>?): String? = Gson().toJson(genreList)
 
     @TypeConverter
-    fun convertStringToGenre(data: String?): Genre? {
-        val type = object : TypeToken<Genre>() {}.type
-        return Gson().fromJson(data, type)
+    fun convertStringToGenreList(data: String?): List<Genre>? {
+        val listType = object : TypeToken<List<Genre>>() {}.type
+        return Gson().fromJson(data, listType)
     }
 }
