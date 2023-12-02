@@ -1,11 +1,7 @@
 package com.example.streammoviesapplication.data.model.mapper
 
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
-import com.example.streammoviesapplication.data.model.remoteData.movieDetails.Genre
 import com.example.streammoviesapplication.data.model.remoteData.movieDetails.MovieDetails
-import com.example.streammoviesapplication.data.model.remoteData.movieDetails.ProductionCompany
-import com.example.streammoviesapplication.data.model.remoteData.movieDetails.ProductionCountry
-import com.example.streammoviesapplication.data.model.remoteData.movieDetails.SpokenLanguage
 
 object MovieDetailsMapper {
     fun mapRemoteToEntity(remote: MovieDetails): MovieDetailsEntity {
@@ -23,7 +19,7 @@ object MovieDetailsMapper {
             overview = remote.overview,
             popularity = remote.popularity,
             poster_path = remote.poster_path,
-            production_companies = remote.production_companies >,
+            production_companies = remote.production_companies ,
             production_countries = remote.production_countries,
             release_date = remote.release_date,
             revenue = remote.revenue,
