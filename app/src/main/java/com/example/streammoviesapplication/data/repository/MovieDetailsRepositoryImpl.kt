@@ -13,7 +13,7 @@ class MovieDetailsRepositoryImpl @Inject constructor(
     private val api: MovieService,
     private val movieDetailsDao: MovieDetailsDao
 
-): IMoviesDetailsRepository{
+) : IMoviesDetailsRepository {
     override suspend fun fetchMovieDetails(id: Int): Flow<Resource<MovieDetailsEntity>> {
         return flow {
             when (val response = safeApiCall { api.getAllMovieDetailsById(id) }) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_bg"
-    tools:context=".presentation.tabViews.tabDetailsScreens.tabMovieDetailsFragment">
+    tools:context=".presentation.navFragments.tabDetailsScreens.tabMovieDetailsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cdTabMovieDetails"
