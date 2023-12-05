@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -24,7 +25,7 @@ import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import kotlinx.coroutines.launch
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
     private var _binding: FragmentHomeNavBinding? = null
     private val binding get() = _binding!!
     private val vm: MovieViewModel by activityViewModels()
@@ -66,8 +67,8 @@ class HomeFragment : Fragment() {
 
     private fun setUpViewPager() {
         viewPager2 = binding.vpTrendingMovies
-        vpAdapter = TrendingViewPager(emptyList(), viewPager2)
-        viewPager2.adapter = vpAdapter
+//        vpAdapter = TrendingViewPager(emptyList(), viewPager2, this@HomeFragment)
+//        viewPager2.adapter = vpAdapter
         viewPager2.offscreenPageLimit = 3
         viewPager2.clipToPadding = false
         viewPager2.clipChildren = false
@@ -79,9 +80,7 @@ class HomeFragment : Fragment() {
                 when {
                     state.isLoading -> {
                         showProgressbar()
-
                     }
-
                     state.errorMessage != null -> {
                         Toast.makeText(context, state.errorMessage, Toast.LENGTH_SHORT).show()
 
@@ -90,7 +89,7 @@ class HomeFragment : Fragment() {
                     else -> {
                         hideProgressBar()
                         state.trendingMovies?.let { trendingMovies ->
-                            vpAdapter = TrendingViewPager(trendingMovies, viewPager2)
+                            vpAdapter = TrendingViewPager(trendingMovies, viewPager2, this@HomeFragment)
                             viewPager2.adapter = vpAdapter
 
                             if (trendingMovies.isNotEmpty()) {
@@ -119,6 +118,12 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onMovieClick(movieId: Int) {
+        Toast.makeText(context, "$movieId", Toast.LENGTH_SHORT).show()
+        val action = HomeFragmentDirections.actionHomeToTabMovieDetailsFragment2(movieId)
+        findNavController().navigate(action)
     }
 
 }

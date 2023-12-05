@@ -14,7 +14,11 @@
         <action
             android:id="@+id/action_homeFragment_to_searchMoviesFragment"
             app:destination="@id/play" />
+        <action
+            android:id="@+id/action_home_to_tabMovieDetailsFragment2"
+            app:destination="@id/tabMovieDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/play"
         android:name="com.example.streammoviesapplication.presentation.navFragments.MoviesCategoryFragment"
@@ -29,4 +33,13 @@
         android:name="com.example.streammoviesapplication.presentation.navFragments.ProfileFragment"
         android:label="fragment_profile2"
         tools:layout="@layout/fragment_profile_nav" />
+    <fragment
+        android:id="@+id/tabMovieDetailsFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.tabDetailsScreens.tabMovieDetailsFragment"
+        android:label="fragment_tab_movie_details"
+        tools:layout="@layout/fragment_tab_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
