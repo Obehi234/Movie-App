@@ -15,5 +15,6 @@
     <color name="prompt_color">#BCBCBC</color>
     <color name="dark_grey">#5a5a5a</color>
     <color name="viewpager_bg">#00a294</color>
+    <color name="bg_grey">#666666</color>
 
 </resources>

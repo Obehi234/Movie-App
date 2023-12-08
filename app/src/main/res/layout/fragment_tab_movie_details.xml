@@ -25,6 +25,14 @@
             android:scaleType="fitXY"
             android:src="@drawable/assetimg" />
 
+        <ImageView
+            android:id="@+id/back_icon_nav"
+            android:layout_width="@dimen/dimen_icon_36dp"
+            android:layout_height="@dimen/dimen_icon_36dp"
+            android:src="@drawable/ic_back"
+            android:layout_marginStart="@dimen/margin_37dp"
+            android:layout_marginTop="@dimen/margin_52dp"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView

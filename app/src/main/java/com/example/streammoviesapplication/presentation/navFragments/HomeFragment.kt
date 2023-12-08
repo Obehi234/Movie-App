@@ -25,7 +25,7 @@ import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import kotlinx.coroutines.launch
 
 
-class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
+class HomeFragment : Fragment(), TrendingViewPager.OnMovieClickListener {
     private var _binding: FragmentHomeNavBinding? = null
     private val binding get() = _binding!!
     private val vm: MovieViewModel by activityViewModels()
@@ -67,8 +67,6 @@ class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
 
     private fun setUpViewPager() {
         viewPager2 = binding.vpTrendingMovies
-//        vpAdapter = TrendingViewPager(emptyList(), viewPager2, this@HomeFragment)
-//        viewPager2.adapter = vpAdapter
         viewPager2.offscreenPageLimit = 3
         viewPager2.clipToPadding = false
         viewPager2.clipChildren = false
@@ -81,6 +79,7 @@ class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
                     state.isLoading -> {
                         showProgressbar()
                     }
+
                     state.errorMessage != null -> {
                         Toast.makeText(context, state.errorMessage, Toast.LENGTH_SHORT).show()
 
@@ -89,7 +88,8 @@ class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
                     else -> {
                         hideProgressBar()
                         state.trendingMovies?.let { trendingMovies ->
-                            vpAdapter = TrendingViewPager(trendingMovies, viewPager2, this@HomeFragment)
+                            vpAdapter =
+                                TrendingViewPager(trendingMovies, viewPager2, this@HomeFragment)
                             viewPager2.adapter = vpAdapter
 
                             if (trendingMovies.isNotEmpty()) {
@@ -120,9 +120,9 @@ class HomeFragment : Fragment() , TrendingViewPager.OnMovieClickListener {
         _binding = null
     }
 
-    override fun onMovieClick(movieId: Int) {
-        Toast.makeText(context, "$movieId", Toast.LENGTH_SHORT).show()
-        val action = HomeFragmentDirections.actionHomeToTabMovieDetailsFragment2(movieId)
+    override fun onMovieClick(movie_id: Int) {
+        Toast.makeText(context, "$movie_id", Toast.LENGTH_SHORT).show()
+        val action = HomeFragmentDirections.actionHomeToTabMovieDetailsFragment2(movie_id)
         findNavController().navigate(action)
     }
 
