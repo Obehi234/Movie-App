@@ -18,20 +18,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivTabDetails"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_220dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/assetimg" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/back_icon_nav"
-            android:layout_width="@dimen/dimen_icon_36dp"
-            android:layout_height="@dimen/dimen_icon_36dp"
-            android:layout_marginStart="@dimen/margin_37dp"
-            android:layout_marginTop="@dimen/margin_52dp"
-            android:src="@drawable/ic_back" />
+            <ImageView
+                android:id="@+id/ivTabDetails"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_220dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/assetimg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/back_icon_nav"
+                android:layout_width="@dimen/dimen_icon_36dp"
+                android:layout_height="@dimen/dimen_icon_36dp"
+                android:layout_marginStart="@dimen/margin_37dp"
+                android:layout_marginTop="@dimen/margin_52dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_play_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/play_icon_final"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 
