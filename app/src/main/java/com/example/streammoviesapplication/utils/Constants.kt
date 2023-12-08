@@ -10,5 +10,6 @@ object Constants {
     const val MOVIE_LIST_TABLE = "movie_list_table"
     const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     const val DETAILS_TABLE = "details_table"
+    const val RELATED_MOVIES_TABLE = "related_movies_table"
 
 }
