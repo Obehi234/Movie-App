@@ -16,5 +16,7 @@
     <color name="dark_grey">#5a5a5a</color>
     <color name="viewpager_bg">#00a294</color>
     <color name="bg_grey">#666666</color>
+    <color name="dark_grey_2">#515151</color>
+    <color name="light_grey">#BCBCBC</color>
 
 </resources>

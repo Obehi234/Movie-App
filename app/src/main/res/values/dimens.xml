@@ -64,4 +64,12 @@
     <dimen name="margin_37dp">37dp</dimen>
     <dimen name="margin_52dp">52dp</dimen>
     <dimen name="dimen_icon_36dp">36dp</dimen>
+    <dimen name="height_220dp">220dp</dimen>
+    <dimen name="width_29dp">29dp</dimen>
+    <dimen name="height_1dp">1dp</dimen>
+    <dimen name="margin_18dp">18dp</dimen>
+    <dimen name="width_60dp">60dp</dimen>
+    <dimen name="height_25dp">25dp</dimen>
+    <dimen name="margin_2dp">2dp</dimen>
+    <dimen name="radius_12dp">12dp</dimen>
 </resources>

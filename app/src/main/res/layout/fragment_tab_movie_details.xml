@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/ivTabDetails"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="@dimen/height_220dp"
             android:scaleType="fitXY"
             android:src="@drawable/assetimg" />
 
@@ -51,7 +51,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/iv_rating"
-        android:layout_width="29dp"
+        android:layout_width="@dimen/width_29dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_8dp"
         app:cardBackgroundColor="@color/black"
@@ -73,7 +73,7 @@
         android:id="@+id/iv_Clock"
         android:layout_width="@dimen/clock_dimen_24dp"
         android:layout_height="@dimen/clock_dimen_24dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="@dimen/margin_24dp"
         android:layout_marginTop="@dimen/margin_12dp"
         android:src="@drawable/clock"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
         android:id="@+id/iv_star"
         android:layout_width="@dimen/clock_dimen_24dp"
         android:layout_height="@dimen/clock_dimen_24dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="@dimen/margin_19dp"
         android:src="@drawable/white_star"
         app:layout_constraintStart_toEndOf="@id/tv_Clock_value"
         app:layout_constraintTop_toTopOf="@id/tv_Clock_value" />
@@ -103,7 +103,7 @@
         android:id="@+id/tv_star_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="7.0 (iMDb)"
+        android:text="@string/rating_text"
         android:textColor="@color/white"
         android:textSize="@dimen/text_12sp"
         app:layout_constraintStart_toEndOf="@id/iv_star"
@@ -112,10 +112,10 @@
     <View
         android:id="@+id/horizontalLine"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/height_1dp"
         android:layout_marginHorizontal="@dimen/margin_24dp"
-        android:layout_marginTop="18dp"
-        android:background="#515151"
+        android:layout_marginTop="@dimen/margin_18dp"
+        android:background="@color/dark_grey_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_Clock" />
@@ -125,9 +125,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/lato"
-        android:text="Release Date"
+        android:text="@string/release_date"
         android:textColor="@color/white"
         android:textSize="@dimen/text_16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,9 +138,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_56dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/lato"
-        android:text="Genre"
+        android:text="@string/genre"
         android:textColor="@color/white"
         android:textSize="@dimen/text_16sp"
         app:layout_constraintStart_toEndOf="@id/tvReleaseDate"
@@ -150,9 +150,9 @@
         android:id="@+id/tvReleaseDate_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/lato"
-        android:text="December 9, 2017"
+        android:text="@string/december_9_2017"
         android:textColor="#BCBCBC"
         android:textSize="@dimen/text_12sp"
         app:layout_constraintStart_toStartOf="@id/tvReleaseDate"
@@ -168,8 +168,8 @@
 
         <View
             android:id="@+id/rectangle_4"
-            android:layout_width="60dp"
-            android:layout_height="25dp"
+            android:layout_width="@dimen/width_60dp"
+            android:layout_height="@dimen/height_25dp"
             android:background="@drawable/rectangle_4"
             android:visibility="visible" />
 
@@ -178,8 +178,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Action"
-            android:textColor="#BCBCBC"
+            android:text="@string/action_detail"
+            android:textColor="@color/light_grey"
             android:textSize="@dimen/text_12sp"
             android:textStyle="bold" />
 
@@ -195,8 +195,8 @@
 
         <View
             android:id="@+id/rectangle_5"
-            android:layout_width="60dp"
-            android:layout_height="25dp"
+            android:layout_width="@dimen/width_60dp"
+            android:layout_height="@dimen/height_25dp"
             android:background="@drawable/rectangle_4"
             android:visibility="visible" />
 
@@ -205,8 +205,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Sci-Fi"
-            android:textColor="#BCBCBC"
+            android:text="@string/sci_fi"
+            android:textColor="@color/light_grey"
             android:textSize="@dimen/text_12sp"
             android:textStyle="bold" />
 
@@ -215,10 +215,10 @@
     <View
         android:id="@+id/horizontalLine2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/height_1dp"
         android:layout_marginHorizontal="@dimen/margin_24dp"
-        android:layout_marginTop="18dp"
-        android:background="#515151"
+        android:layout_marginTop="@dimen/margin_18dp"
+        android:background="@color/dark_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvReleaseDate_value" />
@@ -230,7 +230,7 @@
         android:layout_marginStart="@dimen/margin_24dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/lato"
-        android:text="Synopsis"
+        android:text="@string/synopsis"
         android:textColor="@color/white"
         android:textSize="@dimen/text_16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -244,9 +244,8 @@
         android:layout_marginTop="@dimen/margin_12dp"
         android:fontFamily="@font/lato"
         android:padding="@dimen/padding_6dp"
-        android:text="Rey (Daisy Ridley) finally manages to find the legendary Jedi knight,
-         Luke Skywalker (Mark Hamill) on an island with a magical aura. The heroes of The Force Awakens including Leia, Finn Read more.."
-        android:textColor="#BCBCBC"
+        android:text="@string/synopsis_detail"
+        android:textColor="@color/light_grey"
         android:textSize="@dimen/text_12sp"
         app:layout_constraintStart_toStartOf="@id/synposis_title"
         app:layout_constraintTop_toBottomOf="@id/synposis_title" />
@@ -258,7 +257,7 @@
         android:layout_marginStart="@dimen/margin_24dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:fontFamily="@font/lato"
-        android:text="Related Movies"
+        android:text="@string/related_movies"
         android:textColor="@color/white"
         android:textSize="@dimen/text_16sp"
         app:layout_constraintStart_toStartOf="parent"
