@@ -1,6 +1,7 @@
 package com.example.streammoviesapplication.network
 
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
+import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
 import com.example.streammoviesapplication.data.model.remoteData.NewMovieListResponse
 import com.example.streammoviesapplication.data.model.remoteData.TrendingMoviesResponse
 import retrofit2.Response
@@ -17,5 +18,8 @@ interface MovieService {
 
     @GET("/3/movie/{id}")
     suspend fun getAllMovieDetailsById(id: Int): Response<MovieDetailsEntity>
+
+    @GET("/3/movie/{id}/similar")
+    suspend fun getRelatedMoviesById(id: Int): Response<RelatedMoviesEntity>
 }
 
