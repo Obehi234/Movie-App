@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
+import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
@@ -93,6 +94,12 @@ object AppModule {
     @Provides
     fun provideMovieDetailsDao(database: MoviesDatabase): MovieDetailsDao {
         return database.movieDetailsDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRelatedMoviesDao(database: MoviesDatabase) : RelatedMoviesDao {
+        return database.relatedMoviesDao()
     }
 
 
