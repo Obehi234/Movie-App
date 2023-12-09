@@ -2,6 +2,7 @@ package com.example.streammoviesapplication.data.repository
 
 import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
+import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.resource.Resource
 import com.example.streammoviesapplication.utils.resource.safeApiCall
@@ -14,7 +15,7 @@ class MovieDetailsRepositoryImpl @Inject constructor(
     private val movieDetailsDao: MovieDetailsDao
 
 ) : IMoviesDetailsRepository {
-    override suspend fun fetchMovieDetails(id: Int): Flow<Resource<MovieDetailsEntity>> {
+    override suspend fun fetchMovieDetails(id: Int): Flow<Resource<List<MovieDetailsEntity>>>{
         return flow {
             when (val response = safeApiCall { api.getAllMovieDetailsById(id) }) {
                 is Resource.Success -> {

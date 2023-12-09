@@ -13,5 +13,5 @@ interface MovieDetailsDao {
     suspend fun insertMovieDetails(movieDetails: List<MovieDetailsEntity>)
 
     @Query("SELECT * FROM ${Constants.DETAILS_TABLE} WHERE id = :id")
-    suspend fun getMovieDetails(id: Int) : MovieDetailsEntity
+    suspend fun getMovieDetails(id: Int) :List< MovieDetailsEntity>
 }
