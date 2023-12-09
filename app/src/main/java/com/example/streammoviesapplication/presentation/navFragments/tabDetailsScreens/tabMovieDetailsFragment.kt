@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentTabMovieDetailsBinding
 import com.example.streammoviesapplication.presentation.navFragments.HomeFragmentDirections
@@ -26,6 +27,8 @@ class tabMovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val movieId = arguments?.getInt("movie_id")
+        binding.ivTabDetails.load("")
         val icBackNav = binding.backIconNav
         icBackNav.setOnClickListener {
             findNavController().navigateUp()

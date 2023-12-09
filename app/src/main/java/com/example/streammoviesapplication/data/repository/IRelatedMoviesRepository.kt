@@ -5,5 +5,5 @@ import com.example.streammoviesapplication.utils.resource.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface IRelatedMoviesRepository {
-    suspend fun fetchRelatedMovies(id: Int) : Flow<Resource<List<RelatedMoviesEntity>>>
+    suspend fun fetchRelatedMovies(id: Int) : Flow<Resource<RelatedMoviesEntity>>
 }
