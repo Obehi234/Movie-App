@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
+import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.utils.resource.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TabViewModel @Inject constructor(
-    val repository: IMoviesTabRepository
+    val repository: IMoviesTabRepository,
+    val detailsRepository: IMoviesDetailsRepository
 ) : ViewModel() {
 
 
@@ -25,6 +27,12 @@ class TabViewModel @Inject constructor(
     init {
         fetchTabMovies()
     }
+    private val _movieId = MutableLiveData<Int>()
+    val movieId: LiveData<Int> = _movieId
+
+    fun setMovieId(id: Int) {
+        _movieId.value = id
+    }
      fun fetchTabMovies() {
         viewModelScope.launch {
             _moviesTabLiveData.value = Resource.Loading()
@@ -33,14 +41,16 @@ class TabViewModel @Inject constructor(
                      when(result){
                          is Resource.Success -> {
                              _moviesTabLiveData.value = Resource.Success(result.data)
+                             Log.d("CHECK_DETAILS", "${result.data}")
                          }
 
                          is Resource.Error -> {
                              showError()
+                             Log.d("CHECK_DETAILS", "${result.message}")
                          }
 
                          else -> {
-                             Log.d("CHECK_LOADING", "NOT SET")
+                             Log.d("CHECK_DETAILS", "${result.message}")
                          }
 
                      }

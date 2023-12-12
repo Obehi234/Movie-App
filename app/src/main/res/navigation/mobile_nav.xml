@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_profile_nav" />
     <fragment
         android:id="@+id/tabMovieDetailsFragment"
-        android:name="com.example.streammoviesapplication.presentation.navFragments.tabDetailsScreens.tabMovieDetailsFragment"
+        android:name="com.example.streammoviesapplication.presentation.navFragments.details.MovieDetailsFragment"
         android:label="fragment_tab_movie_details"
         tools:layout="@layout/fragment_tab_movie_details" >
         <argument

@@ -6,6 +6,7 @@ import com.example.streammoviesapplication.data.model.remoteData.NewMovieListRes
 import com.example.streammoviesapplication.data.model.remoteData.TrendingMoviesResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 interface MovieService {
@@ -16,8 +17,8 @@ interface MovieService {
     @GET("/3/discover/movie")
     suspend fun getMovieList() : Response<NewMovieListResponse>
 
-    @GET("/3/movie/{id}")
-    suspend fun getAllMovieDetailsById(id: Int): Response<MovieDetailsEntity>
+    @GET("/3/movie/{movie_id}")
+    suspend fun getAllMovieDetailsById(@Path("movie_id")id: Int): Response<MovieDetailsEntity>
 
     @GET("/3/movie/{id}/similar")
     suspend fun getRelatedMoviesById(id: Int): Response<RelatedMoviesEntity>

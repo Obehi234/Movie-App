@@ -10,8 +10,8 @@ import com.example.streammoviesapplication.utils.Constants
 @Dao
 interface MovieDetailsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovieDetails(movieDetails: List<MovieDetailsEntity>)
+    suspend fun insertMovieDetails(movieDetails: MovieDetailsEntity)
 
     @Query("SELECT * FROM ${Constants.DETAILS_TABLE} WHERE id = :id")
-    suspend fun getMovieDetails(id: Int) :List< MovieDetailsEntity>
+    suspend fun getMovieDetails(id: Int) :MovieDetailsEntity
 }
