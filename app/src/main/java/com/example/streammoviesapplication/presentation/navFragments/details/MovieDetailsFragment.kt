@@ -41,14 +41,12 @@ class MovieDetailsFragment : Fragment() {
         val movieId = args.movieId
         Log.d("CHECK MOVIE ID", "${movieId}")
         if (movieId == -1) {
-            Log.e("DetailsFragment", "Movie ID not provided.")
             return
         }
 
         vm.fetchMovieDetails(movieId)
         Log.d("CHECK VM", "${movieId}")
         vm.movieDetails.observe(viewLifecycleOwner, Observer { detailsResource ->
-            Log.d("CHECK VM DATA", "${detailsResource.data}")
             when (detailsResource) {
                 is Resource.Success -> {
                     val movieDetails = detailsResource.data
@@ -64,11 +62,7 @@ class MovieDetailsFragment : Fragment() {
                             synopsisDescription.text = it.overview
 
                         }
-
-
-
                     }
-
                 }
 
                 is Resource.Error -> {
@@ -80,7 +74,6 @@ class MovieDetailsFragment : Fragment() {
                 }
             }
         })
-
 
     }
     }

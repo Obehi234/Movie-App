@@ -1,6 +1,6 @@
 package com.example.streammoviesapplication.data.model.remoteData.relatedMovies
 
-data class RelatedMovies(
+data class RelatedMoviesResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

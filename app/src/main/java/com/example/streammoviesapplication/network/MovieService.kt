@@ -20,7 +20,7 @@ interface MovieService {
     @GET("/3/movie/{movie_id}")
     suspend fun getAllMovieDetailsById(@Path("movie_id")id: Int): Response<MovieDetailsEntity>
 
-    @GET("/3/movie/{id}/similar")
-    suspend fun getRelatedMoviesById(id: Int): Response<RelatedMoviesEntity>
+    @GET("/3/movie/{movie_id}/similar")
+    suspend fun getRelatedMoviesById(@Path("movie_id") id: Int): Response<RelatedMoviesEntity>
 }
 

@@ -1,5 +1,6 @@
 package com.example.streammoviesapplication.data.repository
 
+import android.util.Log
 import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
 import com.example.streammoviesapplication.network.MovieService
@@ -23,6 +24,7 @@ class RelatedMoviesRepositoryImpl
                         relatedMoviesDao.insertRelatedMovies(listOf(relatedMovies))
                     }
                     emit (Resource.Success(relatedMoviesDao.getRelatedMovies(id)))
+                    Log.d("CHECK_RELATED MOVIES REPO", "SUCCESS")
                 }
 
                 is Resource.Error -> {
