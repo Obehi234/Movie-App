@@ -9,7 +9,7 @@ data class TVSeriesEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     val adult: Boolean,
-    val backdropPath: String,
+    val backdropPath: String? = "",
     val firstAirDate: String,
     val name: String,
     val originalLanguage: String,

@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
+import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
 
 @Database(
@@ -13,7 +14,8 @@ import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEn
         TrendingMoviesEntity::class,
         MovieResultEntity::class,
         MovieDetailsEntity::class,
-        RelatedMoviesEntity::class
+        RelatedMoviesEntity::class,
+        TVSeriesEntity::class
     ], version = 1, exportSchema = false
 )
 @TypeConverters(ListTypeConverter::class, GenreTypeConverter::class)
@@ -23,4 +25,6 @@ abstract class MoviesDatabase : RoomDatabase() {
     abstract fun movieDetailsDao() : MovieDetailsDao
 
     abstract fun relatedMoviesDao() : RelatedMoviesDao
+
+    abstract fun tvSeriesDao() : TVSeriesDao
 }

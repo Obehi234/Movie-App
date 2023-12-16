@@ -1,15 +1,18 @@
 package com.example.streammoviesapplication.presentation.tabViews
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.streammoviesapplication.R
 import com.example.streammoviesapplication.databinding.FragmentTvSeriesTabBinding
 import com.example.streammoviesapplication.presentation.adapter.TVSeriesAdapter
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
+import com.example.streammoviesapplication.utils.resource.Resource
 
 class TabTvSeriesFragment : Fragment() {
     private var _binding : FragmentTvSeriesTabBinding? = null
@@ -32,7 +35,27 @@ class TabTvSeriesFragment : Fragment() {
     }
 
     private fun setUpRV() {
-        TODO("Not yet implemented")
+        vm.tvSeriesLiveData.observe(viewLifecycleOwner) {resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    binding.recyclerMovies.apply{
+                        adapter = tabTVSeriesAdapter
+                    }
+                    tabTVSeriesAdapter.submitList(resource.data)
+                }
+                is Resource.Error -> {
+                    Toast.makeText(context, "${resource.message}", Toast.LENGTH_LONG).show()
+                }
+
+                is Resource.Loading -> {
+                    Log.d("CHECK_TV_LOADING", "TV Series Loading ...")
+                }
+
+                else -> {
+
+                }
+            }
+        }
     }
 
 

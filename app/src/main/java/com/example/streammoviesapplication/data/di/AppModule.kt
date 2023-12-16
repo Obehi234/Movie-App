@@ -109,6 +109,12 @@ object AppModule {
         return database.relatedMoviesDao()
     }
 
+    @Singleton
+    @Provides
+    fun providesTVSeriesDao(database: MoviesDatabase) : TVSeriesDao {
+        return database.tvSeriesDao()
+    }
+
 
     @Singleton
     @Provides
