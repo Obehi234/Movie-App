@@ -6,14 +6,17 @@ import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.RelatedMoviesDao
+import com.example.streammoviesapplication.data.db.TVSeriesDao
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.IRelatedMoviesRepository
+import com.example.streammoviesapplication.data.repository.ITVSeriesRepository
 import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
 import com.example.streammoviesapplication.data.repository.MovieDetailsRepositoryImpl
 import com.example.streammoviesapplication.data.repository.MoviesTabRepositoryImpl
 import com.example.streammoviesapplication.data.repository.RelatedMoviesRepositoryImpl
+import com.example.streammoviesapplication.data.repository.TVSeriesRepositoryImpl
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepositoryImpl
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
@@ -90,7 +93,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesMovieListDao(database: MoviesDatabase) : MovieListDao {
+    fun providesMovieListDao(database: MoviesDatabase): MovieListDao {
         return database.movieListDao()
     }
 
@@ -102,7 +105,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRelatedMoviesDao(database: MoviesDatabase) : RelatedMoviesDao {
+    fun provideRelatedMoviesDao(database: MoviesDatabase): RelatedMoviesDao {
         return database.relatedMoviesDao()
     }
 
@@ -122,10 +125,10 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMovieDetailsRepository (
+    fun provideMovieDetailsRepository(
         api: MovieService,
         movieDetailsDao: MovieDetailsDao
-    ): IMoviesDetailsRepository{
+    ): IMoviesDetailsRepository {
         return MovieDetailsRepositoryImpl(api, movieDetailsDao)
     }
 
@@ -138,13 +141,22 @@ object AppModule {
         return MoviesTabRepositoryImpl(api, movieListDao)
     }
 
-     @Singleton
-        @Provides
-        fun providesRelatedMoviesRepository(
-           api: MovieService,
-            relatedMoviesDao: RelatedMoviesDao
-        ): IRelatedMoviesRepository {
-           return RelatedMoviesRepositoryImpl(api, relatedMoviesDao)
-        }
+    @Singleton
+    @Provides
+    fun providesRelatedMoviesRepository(
+        api: MovieService,
+        relatedMoviesDao: RelatedMoviesDao
+    ): IRelatedMoviesRepository {
+        return RelatedMoviesRepositoryImpl(api, relatedMoviesDao)
+    }
+
+    @Singleton
+    @Provides
+    fun providesTVSeriesRepository(
+        api: MovieService,
+        tvSeriesDao: TVSeriesDao
+    ): ITVSeriesRepository {
+        return TVSeriesRepositoryImpl(api, tvSeriesDao)
+    }
 
 }
