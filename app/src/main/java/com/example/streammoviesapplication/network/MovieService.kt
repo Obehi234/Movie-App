@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.network
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
 import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
 import com.example.streammoviesapplication.data.model.remoteData.NewMovieListResponse
+import com.example.streammoviesapplication.data.model.remoteData.TVSeriesListResponse
 import com.example.streammoviesapplication.data.model.remoteData.TrendingMoviesResponse
 import com.example.streammoviesapplication.data.model.remoteData.relatedMovies.RelatedMoviesResponse
 import retrofit2.Response
@@ -23,5 +24,8 @@ interface MovieService {
 
     @GET("/3/movie/{movie_id}/similar")
     suspend fun getRelatedMoviesById(@Path("movie_id") id: Int): Response<RelatedMoviesResponse>
+
+    @GET("/3/tv/airing_today")
+    suspend fun getTVSeries() : Response<TVSeriesListResponse>
 }
 

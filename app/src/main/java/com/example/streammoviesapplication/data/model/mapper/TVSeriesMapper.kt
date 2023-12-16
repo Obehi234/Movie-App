@@ -5,7 +5,7 @@ import com.example.streammoviesapplication.data.model.remoteData.TabTVSeriesList
 
 object TVSeriesMapper {
 
-    fun mapRemoteTabToTabEntity(remote: TabTVSeriesList): TVSeriesEntity {
+    fun mapRemoteTabToTVSeriesEntity(remote: TabTVSeriesList): TVSeriesEntity {
         return TVSeriesEntity(
             id = remote.id,
             adult = remote.adult,
