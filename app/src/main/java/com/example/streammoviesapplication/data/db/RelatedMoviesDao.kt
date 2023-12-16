@@ -13,6 +13,6 @@ interface RelatedMoviesDao {
     suspend fun insertRelatedMovies(relatedMovies: List<RelatedMoviesEntity>)
 
     @Query("SELECT * FROM ${Constants.RELATED_MOVIES_TABLE} WHERE id = :id")
-    suspend fun getRelatedMovies(id: Int) : RelatedMoviesEntity
+    suspend fun getRelatedMovies(id: Int) : List<RelatedMoviesEntity>
 
 }

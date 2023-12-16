@@ -9,9 +9,11 @@ import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
+import com.example.streammoviesapplication.data.repository.IRelatedMoviesRepository
 import com.example.streammoviesapplication.data.repository.ITrendingMoviesRepository
 import com.example.streammoviesapplication.data.repository.MovieDetailsRepositoryImpl
 import com.example.streammoviesapplication.data.repository.MoviesTabRepositoryImpl
+import com.example.streammoviesapplication.data.repository.RelatedMoviesRepositoryImpl
 import com.example.streammoviesapplication.data.repository.TrendingMoviesRepositoryImpl
 import com.example.streammoviesapplication.network.ApiKeyInterceptor
 import com.example.streammoviesapplication.network.MovieService
@@ -135,5 +137,14 @@ object AppModule {
     ): IMoviesTabRepository {
         return MoviesTabRepositoryImpl(api, movieListDao)
     }
+
+     @Singleton
+        @Provides
+        fun providesRelatedMoviesRepository(
+           api: MovieService,
+            relatedMoviesDao: RelatedMoviesDao
+        ): IRelatedMoviesRepository {
+           return RelatedMoviesRepositoryImpl(api, relatedMoviesDao)
+        }
 
 }

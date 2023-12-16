@@ -10,8 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.streammoviesapplication.databinding.FragmentTabMovieDetailsBinding
+import com.example.streammoviesapplication.presentation.adapter.relatedMoviesHorizontalAdapter.RelatedMoviesAdapter
 import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
@@ -21,6 +23,7 @@ class MovieDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private val vm: MovieViewModel by activityViewModels()
     private val args: MovieDetailsFragmentArgs by navArgs()
+    private lateinit var relatedMoviesAdapter: RelatedMoviesAdapter
 
 
     override fun onCreateView(
@@ -42,6 +45,12 @@ class MovieDetailsFragment : Fragment() {
         Log.d("CHECK MOVIE ID", "${movieId}")
         if (movieId == -1) {
             return
+        }
+
+        relatedMoviesAdapter = RelatedMoviesAdapter()
+        binding.horizontalRv.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = relatedMoviesAdapter
         }
 
         vm.fetchMovieDetails(movieId)
@@ -75,8 +84,35 @@ class MovieDetailsFragment : Fragment() {
             }
         })
 
-    }
-    }
+        vm.fetchRelatedMovies(movieId)
+        Log.d("CHECK_RELATED", "$movieId")
+        vm.relatedMovieDetails.observe(viewLifecycleOwner, Observer { relatedMoviesResource ->
+            when (relatedMoviesResource) {
+                is Resource.Success -> {
+                    val relatedMovies = relatedMoviesResource.data
+                    Log.d("CHECK_REL", "$relatedMovies")
+                    relatedMovies?.let {result ->
+                        relatedMoviesAdapter.submitList(result)
+                    }
+                }
+
+                is Resource.Error -> {
+                    Log.d(
+                        "CHECK_ERROR",
+                        "Error loading related movies: ${relatedMoviesResource.message}"
+                    )
+                }
+
+                is Resource.Loading -> {
+                    Log.d("CHECK_LOADING", "Loading related movies...")
+                }
+            }
+
+
+
+            })
+}
+}
 
 
 

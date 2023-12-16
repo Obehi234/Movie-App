@@ -8,11 +8,8 @@ import com.example.streammoviesapplication.utils.Constants
 @Entity(tableName = Constants.RELATED_MOVIES_TABLE)
 data class RelatedMoviesEntity (
     val adult: Boolean,
-    val backdrop_path: String,
     @PrimaryKey
     val id: Int,
-    val original_language: String,
-    val original_title: String,
     val overview: String,
     val popularity: Double,
     val poster_path: String,

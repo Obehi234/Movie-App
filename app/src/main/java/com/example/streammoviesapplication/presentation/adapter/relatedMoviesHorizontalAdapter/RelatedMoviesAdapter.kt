@@ -22,7 +22,7 @@ class RelatedMoviesAdapter :
         fun bind(item: RelatedMoviesEntity) {
             binding.apply {
                 imgHorizontalRv.load(BASE_IMAGE_URL + item.poster_path)
-                tvTitle.text = item.original_title
+                tvTitle.text = item.title
             }
         }
     }

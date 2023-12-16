@@ -15,11 +15,14 @@ class RelatedMoviesRepositoryImpl
     private val api: MovieService,
     val relatedMoviesDao: RelatedMoviesDao
 ): IRelatedMoviesRepository {
-    override suspend fun fetchRelatedMovies(id: Int) : Flow<Resource<RelatedMoviesEntity>> {
+    override suspend fun fetchRelatedMovies(id: Int) : Flow<Resource<List<RelatedMoviesEntity>>> {
         return flow {
             when(val response = safeApiCall { api.getRelatedMoviesById(id) }) {
                 is Resource.Success -> {
-                    val relatedMovies = response.data
+                    val relatedMovies = response.data?.results
+                    val relatedMovieList = relatedMovies?.map{result ->
+
+                    }
                     if(relatedMovies != null) {
                         relatedMoviesDao.insertRelatedMovies(listOf(relatedMovies))
                     }
@@ -29,6 +32,7 @@ class RelatedMoviesRepositoryImpl
 
                 is Resource.Error -> {
                     emit(Resource.Error("${response.message}"))
+                    Log.d("CHECK_RELATED MOVIES REPO", "ERROR")
                 }
 
                 is Resource.Loading -> {
