@@ -1,6 +1,6 @@
 package com.example.streammoviesapplication.data.model.remoteData.relatedMovies
 
-data class Result(
+data class RelatedMovieList(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

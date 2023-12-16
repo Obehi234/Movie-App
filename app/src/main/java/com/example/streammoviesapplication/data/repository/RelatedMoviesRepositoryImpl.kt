@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.data.repository
 import android.util.Log
 import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
+import com.example.streammoviesapplication.data.model.mapper.RelatedMoviesMapper
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.resource.Resource
 import com.example.streammoviesapplication.utils.resource.safeApiCall
@@ -21,13 +22,15 @@ class RelatedMoviesRepositoryImpl
                 is Resource.Success -> {
                     val relatedMovies = response.data?.results
                     val relatedMovieList = relatedMovies?.map{result ->
+                        RelatedMoviesMapper.mapRelatedMoviesRemoteToEntity(result)
+                    }
 
+                    if (relatedMovieList != null) {
+                            relatedMoviesDao.insertRelatedMovies(relatedMovieList)
                     }
-                    if(relatedMovies != null) {
-                        relatedMoviesDao.insertRelatedMovies(listOf(relatedMovies))
-                    }
+
                     emit (Resource.Success(relatedMoviesDao.getRelatedMovies(id)))
-                    Log.d("CHECK_RELATED MOVIES REPO", "SUCCESS")
+                    Log.d("CHECK_RELATED MOVIES REPO", "SUCCESS - $relatedMovieList")
                 }
 
                 is Resource.Error -> {
