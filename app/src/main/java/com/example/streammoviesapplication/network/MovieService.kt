@@ -2,6 +2,7 @@ package com.example.streammoviesapplication.network
 
 import com.example.streammoviesapplication.data.model.localData.MovieDetailsEntity
 import com.example.streammoviesapplication.data.model.localData.RelatedMoviesEntity
+import com.example.streammoviesapplication.data.model.remoteData.DocumentaryResponse
 import com.example.streammoviesapplication.data.model.remoteData.NewMovieListResponse
 import com.example.streammoviesapplication.data.model.remoteData.TVSeriesListResponse
 import com.example.streammoviesapplication.data.model.remoteData.TrendingMoviesResponse
@@ -27,5 +28,8 @@ interface MovieService {
 
     @GET("/3/tv/airing_today")
     suspend fun getTVSeries() : Response<TVSeriesListResponse>
+
+    @GET("")
+    suspend fun getDocumentary() : Response<DocumentaryResponse>
 }
 

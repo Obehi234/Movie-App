@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
+import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.ITVSeriesRepository
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TabViewModel @Inject constructor(
     val repository: IMoviesTabRepository,
-    val tvSeriesRepository: ITVSeriesRepository
+    val tvSeriesRepository: ITVSeriesRepository,
+    val documentaryRepository: IDocumentaryRepository
 ) : ViewModel() {
 
     private val _moviesTabLiveData = MutableLiveData<Resource<List<MovieResultEntity>>>()
@@ -31,6 +33,7 @@ class TabViewModel @Inject constructor(
     init {
         fetchTabMovies()
         fetchTVSeries()
+        fetchDocumentary()
     }
 
     private fun fetchTVSeries() {
@@ -98,6 +101,12 @@ class TabViewModel @Inject constructor(
             } catch (e: Exception) {
                 _moviesTabLiveData.value = Resource.Error(e.localizedMessage ?: "An error occurred")
             }
+        }
+    }
+
+    private fun fetchDocumentary() {
+        viewModelScope.launch {
+
         }
     }
 
