@@ -2,12 +2,15 @@ package com.example.streammoviesapplication.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.streammoviesapplication.data.db.DocumentaryDao
 import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
 import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.db.TVSeriesDao
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
+import com.example.streammoviesapplication.data.repository.DocumentaryRepositoryImpl
+import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.IRelatedMoviesRepository
@@ -115,6 +118,12 @@ object AppModule {
         return database.tvSeriesDao()
     }
 
+    @Singleton
+    @Provides
+    fun providesDocumentaryDao(database: MoviesDatabase) : DocumentaryDao {
+        return database.documentaryDao()
+    }
+
 
     @Singleton
     @Provides
@@ -163,6 +172,15 @@ object AppModule {
         tvSeriesDao: TVSeriesDao
     ): ITVSeriesRepository {
         return TVSeriesRepositoryImpl(api, tvSeriesDao)
+    }
+
+    @Singleton
+    @Provides
+    fun providesDocumentaryRepository(
+        api: MovieService,
+        documentaryDao: DocumentaryDao
+    ): IDocumentaryRepository {
+        return DocumentaryRepositoryImpl(api, documentaryDao)
     }
 
 }

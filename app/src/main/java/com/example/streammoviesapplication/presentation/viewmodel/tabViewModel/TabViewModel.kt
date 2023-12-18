@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.streammoviesapplication.data.model.localData.DocumentaryEntity
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
@@ -30,6 +31,8 @@ class TabViewModel @Inject constructor(
     private val _tvSeriesLiveData = MutableLiveData<Resource<List<TVSeriesEntity>>>()
     val tvSeriesLiveData: LiveData<Resource<List<TVSeriesEntity>>> = _tvSeriesLiveData
 
+    private val _documentaryLiveData = MutableLiveData<Resource<List<DocumentaryEntity>>>()
+    val documentaryLiveData: LiveData<Resource<List<DocumentaryEntity>>> = _documentaryLiveData
     init {
         fetchTabMovies()
         fetchTVSeries()
@@ -106,7 +109,27 @@ class TabViewModel @Inject constructor(
 
     private fun fetchDocumentary() {
         viewModelScope.launch {
+            _documentaryLiveData.value = Resource.Loading()
+            try{
+                documentaryRepository.fetchDocumentary().collect() {result ->
+                    when(result) {
+                        is Resource.Success -> {
+                            _documentaryLiveData.value = Resource.Success(result.data)
+                            Log.d("CHECK_DOCUMENTARY", "${result.data}")
+                        }
+                        is Resource.Error -> {
+                            showError()
+                            Log.d("CHECK_DETAILS", "${result.message}")
+                        }
 
+                        else -> {
+                            Log.d("CHECK_DETAILS", "${result.message}")
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                _documentaryLiveData.value = Resource.Error(e.localizedMessage ?: "An error occurred")
+            }
         }
     }
 
