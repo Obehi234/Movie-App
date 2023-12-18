@@ -3,6 +3,7 @@ package com.example.streammoviesapplication.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.streammoviesapplication.data.db.DocumentaryDao
+import com.example.streammoviesapplication.data.db.HorrorMovieDao
 import com.example.streammoviesapplication.data.db.MovieDetailsDao
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.db.MoviesDatabase
@@ -10,7 +11,9 @@ import com.example.streammoviesapplication.data.db.RelatedMoviesDao
 import com.example.streammoviesapplication.data.db.TVSeriesDao
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.repository.DocumentaryRepositoryImpl
+import com.example.streammoviesapplication.data.repository.HorrorMovieRepositoryImpl
 import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
+import com.example.streammoviesapplication.data.repository.IHorrorMovieRepository
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.IRelatedMoviesRepository
@@ -124,6 +127,12 @@ object AppModule {
         return database.documentaryDao()
     }
 
+    @Singleton
+    @Provides
+    fun providesHorrorMoviesDao(database: MoviesDatabase) : HorrorMovieDao {
+        return database.horrorMoviesDao()
+    }
+
 
     @Singleton
     @Provides
@@ -181,6 +190,15 @@ object AppModule {
         documentaryDao: DocumentaryDao
     ): IDocumentaryRepository {
         return DocumentaryRepositoryImpl(api, documentaryDao)
+    }
+
+    @Singleton
+    @Provides
+    fun providesHorrorMoviesRepository(
+        api: MovieService,
+        horrorMovieDao: HorrorMovieDao
+    ): IHorrorMovieRepository {
+        return HorrorMovieRepositoryImpl(api, horrorMovieDao)
     }
 
 }
