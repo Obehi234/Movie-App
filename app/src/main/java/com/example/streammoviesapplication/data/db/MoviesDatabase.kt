@@ -33,4 +33,6 @@ abstract class MoviesDatabase : RoomDatabase() {
     abstract fun tvSeriesDao() : TVSeriesDao
 
     abstract fun documentaryDao() : DocumentaryDao
+
+    abstract fun horrorMoviesDao() : HorrorMovieDao
 }
