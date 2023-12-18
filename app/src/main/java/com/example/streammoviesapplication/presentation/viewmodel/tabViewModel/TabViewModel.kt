@@ -19,7 +19,6 @@ import javax.inject.Inject
 @HiltViewModel
 class TabViewModel @Inject constructor(
     val repository: IMoviesTabRepository,
-    val detailsRepository: IMoviesDetailsRepository,
     val tvSeriesRepository: ITVSeriesRepository
 ) : ViewModel() {
 
@@ -45,6 +44,7 @@ class TabViewModel @Inject constructor(
                             _tvSeriesLiveData.value = result
                             Log.d("VM_TV_SERIES", "${result.data}")
                         }
+
                         is Resource.Error -> {
                             showError()
                             Log.d("CHECK_TV_ERROR", "${result.message}")
@@ -69,27 +69,28 @@ class TabViewModel @Inject constructor(
     fun setMovieId(id: Int) {
         _movieId.value = id
     }
-     fun fetchTabMovies() {
+
+    fun fetchTabMovies() {
         viewModelScope.launch {
             _moviesTabLiveData.value = Resource.Loading()
             try {
-                 repository.fetchMoviesListTab().collect{result ->
-                     when(result){
-                         is Resource.Success -> {
-                             _moviesTabLiveData.value = Resource.Success(result.data)
-                             Log.d("CHECK_DETAILS", "${result.data}")
-                         }
+                repository.fetchMoviesListTab().collect { result ->
+                    when (result) {
+                        is Resource.Success -> {
+                            _moviesTabLiveData.value = Resource.Success(result.data)
+                            Log.d("CHECK_DETAILS", "${result.data}")
+                        }
 
-                         is Resource.Error -> {
-                             showError()
-                             Log.d("CHECK_DETAILS", "${result.message}")
-                         }
+                        is Resource.Error -> {
+                            showError()
+                            Log.d("CHECK_DETAILS", "${result.message}")
+                        }
 
-                         else -> {
-                             Log.d("CHECK_DETAILS", "${result.message}")
-                         }
+                        else -> {
+                            Log.d("CHECK_DETAILS", "${result.message}")
+                        }
 
-                     }
+                    }
 
 
                 }
