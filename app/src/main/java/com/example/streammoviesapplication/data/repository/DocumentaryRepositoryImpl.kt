@@ -17,8 +17,9 @@ class DocumentaryRepositoryImpl
     private val documentaryDao: DocumentaryDao
 ): IDocumentaryRepository {
     override suspend fun fetchDocumentary(): Flow<Resource<List<DocumentaryEntity>>> {
+
         return flow {
-            when(val response = safeApiCall { api.getDocumentary() }) {
+            when(val response = safeApiCall { api.getDocumentary(99) }) {
                 is Resource.Success -> {
                     val documentaryTabResult = response.data?.results
                     val documentaryList = documentaryTabResult?.map {result ->

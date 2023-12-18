@@ -1,15 +1,14 @@
 package com.example.streammoviesapplication.data.model.localData
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.example.streammoviesapplication.utils.Constants
 
-@Entity(tableName = Constants.DOCUMENTARY_TABLE)
-data class DocumentaryEntity(
+
+@Entity(tableName = Constants.HORROR_MOVIES_TABLE)
+data class HorrorEntity(
 val adult: Boolean,
-val backdrop_path: String?,
+val backdrop_path: String,
 val genre_ids: List<Int>,
-@PrimaryKey
 val id: Int,
 val original_language: String,
 val original_title: String,

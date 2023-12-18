@@ -10,6 +10,7 @@ import com.example.streammoviesapplication.data.model.remoteData.relatedMovies.R
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface MovieService {
@@ -29,7 +30,8 @@ interface MovieService {
     @GET("/3/tv/airing_today")
     suspend fun getTVSeries() : Response<TVSeriesListResponse>
 
-    @GET("")
-    suspend fun getDocumentary() : Response<DocumentaryResponse>
+    @GET("/3/discover/movie")
+    suspend fun getDocumentary(@Query("with_genres") genreId: Int): Response<DocumentaryResponse>
+
 }
 

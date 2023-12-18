@@ -13,5 +13,6 @@ object Constants {
     const val RELATED_MOVIES_TABLE = "related_movies_table"
     const val TV_SERIES_TABLE = "tv_series_table"
     const val DOCUMENTARY_TABLE = "documentary_table"
+    const val HORROR_MOVIES_TABLE = "horror_movies_table"
 
 }
