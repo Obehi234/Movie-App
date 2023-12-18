@@ -42,6 +42,7 @@ class DocumentaryRepositoryImpl
                     emit(Resource.Loading())
                 }
 
+                else -> {}
             }
         }
     }
