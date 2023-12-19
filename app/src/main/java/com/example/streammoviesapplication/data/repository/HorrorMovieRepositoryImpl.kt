@@ -1,7 +1,9 @@
 package com.example.streammoviesapplication.data.repository
 
+import android.util.Log
 import com.example.streammoviesapplication.data.db.HorrorMovieDao
 import com.example.streammoviesapplication.data.model.localData.HorrorMoviesEntity
+import com.example.streammoviesapplication.data.model.mapper.HorrorMoviesMapper
 import com.example.streammoviesapplication.network.MovieService
 import com.example.streammoviesapplication.utils.resource.Resource
 import com.example.streammoviesapplication.utils.resource.safeApiCall
@@ -19,7 +21,25 @@ class HorrorMovieRepositoryImpl
         return flow {
             when(val response = safeApiCall { api.getHorrorMovies(27) }) {
                 is Resource.Success -> {
+                    val horrorMovieTab = response.data?.results
+                    val horrorMovieList = horrorMovieTab?.map { result ->
+                        HorrorMoviesMapper.mapRemoteToEntity(result)
+                    }
+                    Log.d("CHECK_DOCUMENTARY_REPO", "$horrorMovieTab")
+                    if(horrorMovieList != null) {
+                        Log.d("CHECK_HORROR_MOVIE_REPO", "$horrorMovieList")
+                        horrorMovieDao.insertHorrorMovieList(horrorMovieList)
+                    }
+                    emit(Resource.Success(horrorMovieList))
 
+                }
+                is Resource.Error -> {
+                    emit(Resource.Error("${response.message}"))
+
+                }
+
+                is Resource.Loading -> {
+                    emit(Resource.Loading())
                 }
             }
         }
