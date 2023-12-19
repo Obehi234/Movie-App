@@ -2,6 +2,7 @@ package com.example.streammoviesapplication.presentation.tabAdapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,17 +12,21 @@ import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBindi
 import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
-class MovieListAdapter : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
+class MovieListAdapter(
+    private val navController: NavController,
+    private val onItemClickListener: OnItemClickListener
+) : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
 
     interface OnItemClickListener {
         fun onItemClick(itemId: Int)
     }
 
 
-    inner class MovieListViewHolder(private val binding : MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieListViewHolder(private val binding: MovieTabRecyclerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
 
-            binding.apply{
+            binding.apply {
                 movieCardBg.load(BASE_IMAGE_URL + item.poster_path)
                 movieTv.text = item.title
             }
@@ -31,11 +36,17 @@ class MovieListAdapter : ListAdapter<MovieResultEntity, MovieListAdapter.MovieLi
     }
 
     class MovieListDiffUtilCallback : DiffUtil.ItemCallback<MovieResultEntity>() {
-        override fun areItemsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
+        override fun areItemsTheSame(
+            oldItem: MovieResultEntity,
+            newItem: MovieResultEntity
+        ): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
+        override fun areContentsTheSame(
+            oldItem: MovieResultEntity,
+            newItem: MovieResultEntity
+        ): Boolean {
             return oldItem == newItem
         }
     }
