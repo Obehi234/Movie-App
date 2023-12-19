@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.streammoviesapplication.databinding.FragmentMoviesTabBinding
 import com.example.streammoviesapplication.presentation.adapter.MovieListAdapter
+import com.example.streammoviesapplication.presentation.navFragments.MoviesCategoryFragmentDirections
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
-class TabMovieListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
+class TabMovieListFragment : Fragment(),
+    com.example.streammoviesapplication.presentation.tabAdapters.MovieListAdapter.OnItemClickListener {
     private var _binding: FragmentMoviesTabBinding? = null
     private val binding get() = _binding!!
     private val vm:TabViewModel by activityViewModels()
@@ -29,7 +32,7 @@ class TabMovieListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tabMovieAdapter = MovieListAdapter()
+        tabMovieAdapter = MovieListAdapter(findNavController(), this)
         setUpRV()
 
     }
@@ -70,5 +73,11 @@ class TabMovieListFragment : Fragment(), MovieListAdapter.OnItemClickListener {
     private fun showProgressbar() {
         binding.movieListPgBar.visibility = View.VISIBLE
     }
+
+    override fun onItemClick(itemId: Int) {
+        val action = MoviesCategoryFragmentDirections.actionPlayToTabMovieDetailsFragment(itemId)
+        findNavController().navigate(action)
+    }
+
 
 }

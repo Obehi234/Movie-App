@@ -22,6 +22,7 @@ class MovieListAdapter(
     }
 
 
+
     inner class MovieListViewHolder(private val binding: MovieTabRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
