@@ -43,7 +43,6 @@ class TabDocumentaryFragment : Fragment() {
                     documentaryAdapter.submitList(resource.data)
                 }
                 is Resource.Error -> {
-                    Log.d("CHECK_DOC_LOADING", "${resource.message} ...")
                     Toast.makeText(context, "${resource.message}", Toast.LENGTH_LONG).show()
                 }
 

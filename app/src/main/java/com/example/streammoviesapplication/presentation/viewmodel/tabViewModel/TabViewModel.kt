@@ -54,11 +54,9 @@ class TabViewModel @Inject constructor(
                     when(result) {
                         is Resource.Success -> {
                             _horrorMoviesLiveData.value = result
-                            Log.d("VM_HORROR", "${result.data}")
                         }
                         is Resource.Error -> {
                             showError()
-                            Log.d("CHECK_VM_HORROR", "${result.message}")
                         }
                         else -> {
                             Log.d("CHECK_VM_HORROR", "${result.message}")
@@ -67,7 +65,6 @@ class TabViewModel @Inject constructor(
                 }
             }catch (e: Exception) {
                 showError()
-                Log.e("CHECK_VM_HORROR_ERROR", "Exception: ${e.message}")
             }
         }
     }
@@ -81,12 +78,10 @@ class TabViewModel @Inject constructor(
                     when (result) {
                         is Resource.Success -> {
                             _tvSeriesLiveData.value = result
-                            Log.d("VM_TV_SERIES", "${result.data}")
                         }
 
                         is Resource.Error -> {
                             showError()
-                            Log.d("CHECK_TV_ERROR", "${result.message}")
                         }
 
                         else -> {
@@ -117,12 +112,10 @@ class TabViewModel @Inject constructor(
                     when (result) {
                         is Resource.Success -> {
                             _moviesTabLiveData.value = Resource.Success(result.data)
-                            Log.d("CHECK_DETAILS", "${result.data}")
                         }
 
                         is Resource.Error -> {
                             showError()
-                            Log.d("CHECK_DETAILS", "${result.message}")
                         }
 
                         else -> {
@@ -148,11 +141,9 @@ class TabViewModel @Inject constructor(
                     when(result) {
                         is Resource.Success -> {
                             _documentaryLiveData.value = Resource.Success(result.data)
-                            Log.d("CHECK_DOCUMENTARY", "${result.data}")
                         }
                         is Resource.Error -> {
                             showError()
-                            Log.d("CHECK_DETAILS", "${result.message}")
                         }
 
                         else -> {
