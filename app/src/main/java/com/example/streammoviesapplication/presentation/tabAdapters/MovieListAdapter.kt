@@ -13,6 +13,11 @@ import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 class MovieListAdapter : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
 
+    interface OnItemClickListener {
+        fun onItemClick(itemId: Int)
+    }
+
+
     inner class MovieListViewHolder(private val binding : MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MovieResultEntity) {
 
