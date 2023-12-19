@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.streammoviesapplication.data.model.localData.DocumentaryEntity
+import com.example.streammoviesapplication.data.model.localData.HorrorMoviesEntity
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
@@ -35,6 +36,9 @@ class TabViewModel @Inject constructor(
 
     private val _documentaryLiveData = MutableLiveData<Resource<List<DocumentaryEntity>>>()
     val documentaryLiveData: LiveData<Resource<List<DocumentaryEntity>>> = _documentaryLiveData
+
+    private val _horrorMoviesLiveData = MutableLiveData<Resource<List<HorrorMoviesEntity>>>()
+    val horrorMoviesLiveData: LiveData<Resource<List<HorrorMoviesEntity>>> = _horrorMoviesLiveData
     init {
         fetchTabMovies()
         fetchTVSeries()
