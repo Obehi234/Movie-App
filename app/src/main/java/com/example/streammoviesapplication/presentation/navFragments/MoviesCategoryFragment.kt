@@ -33,7 +33,7 @@ class MoviesCategoryFragment : Fragment() {
         adapter.addFragment(TabMovieListFragment(), "Movies")
         adapter.addFragment(TabTvSeriesFragment(), "TvSeries")
         adapter.addFragment(TabDocumentaryFragment(), "Documentary")
-        adapter.addFragment(TabSportFragment(), "Sports")
+        adapter.addFragment(TabSportFragment(), "Horror")
 
         binding.vpSearch.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.vpSearch)
