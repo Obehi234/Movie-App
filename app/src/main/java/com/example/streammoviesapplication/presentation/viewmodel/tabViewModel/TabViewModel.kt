@@ -46,6 +46,32 @@ class TabViewModel @Inject constructor(
         fetchHorrorMovies()
     }
 
+    private fun fetchHorrorMovies() {
+        viewModelScope.launch {
+            try{
+                _horrorMoviesLiveData.value = Resource.Loading()
+                horrorMovieRepository.fetchHorrorMovies().collect{result ->
+                    when(result) {
+                        is Resource.Success -> {
+                            _horrorMoviesLiveData.value = result
+                            Log.d("VM_HORROR", "${result.data}")
+                        }
+                        is Resource.Error -> {
+                            showError()
+                            Log.d("CHECK_VM_HORROR", "${result.message}")
+                        }
+                        else -> {
+                            Log.d("CHECK_VM_HORROR", "${result.message}")
+                        }
+                    }
+                }
+            }catch (e: Exception) {
+                showError()
+                Log.e("CHECK_VM_HORROR_ERROR", "Exception: ${e.message}")
+            }
+        }
+    }
+
     private fun fetchTVSeries() {
         viewModelScope.launch {
             try {
