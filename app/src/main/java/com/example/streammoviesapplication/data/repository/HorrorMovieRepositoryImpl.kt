@@ -25,7 +25,7 @@ class HorrorMovieRepositoryImpl
                     val horrorMovieList = horrorMovieTab?.map { result ->
                         HorrorMoviesMapper.mapRemoteToEntity(result)
                     }
-                    Log.d("CHECK_DOCUMENTARY_REPO", "$horrorMovieTab")
+                    Log.d("CHECK_HORROR_REPO", "$horrorMovieTab")
                     if(horrorMovieList != null) {
                         Log.d("CHECK_HORROR_MOVIE_REPO", "$horrorMovieList")
                         horrorMovieDao.insertHorrorMovieList(horrorMovieList)

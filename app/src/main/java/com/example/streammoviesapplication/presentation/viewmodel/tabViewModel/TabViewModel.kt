@@ -9,6 +9,7 @@ import com.example.streammoviesapplication.data.model.localData.DocumentaryEntit
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.data.repository.IDocumentaryRepository
+import com.example.streammoviesapplication.data.repository.IHorrorMovieRepository
 import com.example.streammoviesapplication.data.repository.IMoviesDetailsRepository
 import com.example.streammoviesapplication.data.repository.IMoviesTabRepository
 import com.example.streammoviesapplication.data.repository.ITVSeriesRepository
@@ -22,7 +23,8 @@ import javax.inject.Inject
 class TabViewModel @Inject constructor(
     val repository: IMoviesTabRepository,
     val tvSeriesRepository: ITVSeriesRepository,
-    val documentaryRepository: IDocumentaryRepository
+    val documentaryRepository: IDocumentaryRepository,
+    val horrorMovieRepository: IHorrorMovieRepository
 ) : ViewModel() {
 
     private val _moviesTabLiveData = MutableLiveData<Resource<List<MovieResultEntity>>>()
@@ -37,6 +39,7 @@ class TabViewModel @Inject constructor(
         fetchTabMovies()
         fetchTVSeries()
         fetchDocumentary()
+        fetchHorrorMovies()
     }
 
     private fun fetchTVSeries() {
