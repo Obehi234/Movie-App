@@ -24,6 +24,16 @@ class MovieListAdapter(
 
     inner class MovieListViewHolder(private val binding: MovieTabRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val movieId = getItem(position).id
+                    onItemClickListener.onItemClick(movieId)
+                }
+            }
+        }
         fun bind(item: MovieResultEntity) {
 
             binding.apply {
