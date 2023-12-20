@@ -6,13 +6,25 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.streammoviesapplication.data.model.localData.DocumentaryEntity
 import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
 import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
-class TVSeriesAdapter: ListAdapter<TVSeriesEntity, TVSeriesAdapter.TVSeriesViewHolder>(TVSeriesDiffUtilCallback()) {
+class TVSeriesAdapter(private val onItemClickListener: TVSeriesAdapter.OnItemClickListener): ListAdapter<TVSeriesEntity, TVSeriesAdapter.TVSeriesViewHolder>(TVSeriesDiffUtilCallback()) {
 
+    interface OnItemClickListener {
+        fun onItemClick(movie: TVSeriesEntity)
+    }
     inner class TVSeriesViewHolder(private val binding: MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(getItem(position))
+                }
+            }
+        }
         fun bind(item: TVSeriesEntity) {
             binding.apply{
                 movieCardBg.load(BASE_IMAGE_URL + item.posterPath)
