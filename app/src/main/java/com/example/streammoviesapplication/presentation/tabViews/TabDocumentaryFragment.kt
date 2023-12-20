@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.streammoviesapplication.R
+import com.example.streammoviesapplication.data.model.localData.DocumentaryEntity
+import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.FragmentDocumentaryTabBinding
 import com.example.streammoviesapplication.presentation.adapter.DocumentaryAdapter
+import com.example.streammoviesapplication.presentation.navFragments.MoviesCategoryFragmentDirections
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
@@ -29,7 +33,15 @@ class TabDocumentaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        documentaryAdapter = DocumentaryAdapter()
+        documentaryAdapter = DocumentaryAdapter(object: DocumentaryAdapter.OnItemClickListener {
+            override fun onItemClick(movie: DocumentaryEntity) {
+                Log.d("MovieListAdapter", "Clicked movie: ${movie.id}")
+                val action =
+                    MoviesCategoryFragmentDirections.actionPlayToTabMovieDetailsFragment(movie.id)
+                findNavController().navigate(action)
+            }
+        })
+
         setUpRV()
     }
 
@@ -52,5 +64,7 @@ class TabDocumentaryFragment : Fragment() {
             }
         }
     }
+
+
 
 }
