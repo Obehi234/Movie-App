@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.streammoviesapplication.databinding.FragmentTabMovieDetailsBinding
 import com.example.streammoviesapplication.presentation.adapter.relatedMoviesHorizontalAdapter.RelatedMoviesAdapter
+import com.example.streammoviesapplication.presentation.viewmodel.DetailsViewModel
 import com.example.streammoviesapplication.presentation.viewmodel.MovieViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
@@ -21,7 +22,7 @@ import com.example.streammoviesapplication.utils.resource.Resource
 class MovieDetailsFragment : Fragment() {
     private var _binding: FragmentTabMovieDetailsBinding? = null
     private val binding get() = _binding!!
-    private val vm: MovieViewModel by activityViewModels()
+    private val vm: DetailsViewModel by activityViewModels()
     private val args: MovieDetailsFragmentArgs by navArgs()
     private lateinit var relatedMoviesAdapter: RelatedMoviesAdapter
 

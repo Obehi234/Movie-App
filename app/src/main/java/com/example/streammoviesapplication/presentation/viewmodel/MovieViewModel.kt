@@ -24,19 +24,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val trendingMoviesRepository: ITrendingMoviesRepository,
-    private val detailsRepository: IMoviesDetailsRepository,
-    private val relatedMovieRepository: IRelatedMoviesRepository
+    private val trendingMoviesRepository: ITrendingMoviesRepository
 ) : ViewModel() {
 
     private var _movieState = MutableStateFlow(MovieViewState())
     val movieState: StateFlow<MovieViewState> = _movieState
 
-    private val _movieDetails = MutableLiveData<Resource<MovieDetailsEntity>>()
-    val movieDetails: LiveData<Resource<MovieDetailsEntity>> = _movieDetails
 
-    private val _relatedMovieDetails = MutableLiveData<Resource<List<RelatedMoviesEntity>>>()
-    val relatedMovieDetails : LiveData<Resource<List<RelatedMoviesEntity>>> = _relatedMovieDetails
 
     init {
         fetchTrendingMovies()
@@ -77,65 +71,8 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-    fun fetchMovieDetails(movieId: Int) {
-        viewModelScope.launch {
-            try {
-                _movieDetails.value = Resource.Loading()
 
-                detailsRepository.fetchMovieDetails(movieId).collect { result ->
-                    when (result) {
-                        is Resource.Success -> {
-                            _movieDetails.value = result
-                            Log.d("CHECK_VM", "Details Result - ${result.data}")
-                        }
 
-                        is Resource.Error -> {
-                            val errorMessage = result.message ?: "Unknown error"
-                            Log.e("CHECK_VM", "Details Error - $errorMessage")
-                            _movieDetails.value = Resource.Error(errorMessage, null)
-                        }
-
-                        is Resource.Loading -> {
-                            // You can handle loading states if needed
-                            Log.d("CHECK_VM", "Details Loading")
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                _movieDetails.value = Resource.Error(e.message ?: "An error occurred", null)
-            }
-        }
-    }
-
-    fun fetchRelatedMovies(movieId: Int) {
-        viewModelScope.launch {
-            try {
-                _relatedMovieDetails.value = Resource.Loading()
-
-                relatedMovieRepository.fetchRelatedMovies(movieId).collect { result ->
-                    when (result) {
-                        is Resource.Success -> {
-                            _relatedMovieDetails.value = result
-                            Log.d("CHECK_VM_RELATED", "Related Movies Result - ${result.data}")
-                        }
-
-                        is Resource.Error -> {
-                            val errorMessage = result.message ?: "Unknown error"
-                            Log.e("CHECK_VM_REL", "Related Movies Error - $errorMessage")
-                            _relatedMovieDetails.value = Resource.Error(errorMessage, null)
-                        }
-
-                        is Resource.Loading -> {
-                            // You can handle loading states if needed
-                            Log.d("CHECK_VM", "Related Movies Loading")
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                _relatedMovieDetails.value = Resource.Error(e.message ?: "An error occurred", null)
-            }
-        }
-    }
 
 }
 
