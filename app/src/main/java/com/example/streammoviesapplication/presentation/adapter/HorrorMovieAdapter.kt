@@ -7,12 +7,25 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.HorrorMoviesEntity
+import com.example.streammoviesapplication.data.model.localData.TVSeriesEntity
 import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
 import com.example.streammoviesapplication.utils.Constants
 
-class HorrorMovieAdapter: ListAdapter<HorrorMoviesEntity, HorrorMovieAdapter.HorrorMovieViewHolder>(HorrorMoviesDiffUtilCallback()) {
+class HorrorMovieAdapter(private val onItemClickListener: HorrorMovieAdapter.OnItemClickListener ): ListAdapter<HorrorMoviesEntity, HorrorMovieAdapter.HorrorMovieViewHolder>(HorrorMoviesDiffUtilCallback()) {
 
+    interface OnItemClickListener {
+        fun onItemClick(movie: HorrorMoviesEntity)
+    }
     inner class HorrorMovieViewHolder(private val binding: MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(getItem(position))
+                }
+            }
+        }
         fun bind(item: HorrorMoviesEntity) {
             binding.apply {
                 movieCardBg.load(Constants.BASE_IMAGE_URL + item.poster_path)

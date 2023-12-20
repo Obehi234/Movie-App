@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.streammoviesapplication.data.model.localData.HorrorMoviesEntity
 import com.example.streammoviesapplication.databinding.FragmentSportsTabBinding
 import com.example.streammoviesapplication.presentation.adapter.HorrorMovieAdapter
+import com.example.streammoviesapplication.presentation.navFragments.MoviesCategoryFragmentDirections
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
@@ -28,7 +31,14 @@ class TabHorrorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        horrorMovieAdapter = HorrorMovieAdapter()
+        horrorMovieAdapter = HorrorMovieAdapter(object: HorrorMovieAdapter.OnItemClickListener{
+            override fun onItemClick(movie: HorrorMoviesEntity) {
+                Log.d("MovieListAdapter", "Clicked movie: ${movie.id}")
+                val action =
+                    MoviesCategoryFragmentDirections.actionPlayToTabMovieDetailsFragment(movie.id)
+                findNavController().navigate(action)
+            }
+        })
         setUpRV()
     }
 
