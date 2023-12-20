@@ -14,11 +14,22 @@ import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
 class MovieListAdapter(
-    findNavController: NavController,
-    tabMovieListFragment: TabMovieListFragment
+    private val onItemClickListener: OnItemClickListener
 ) : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
 
+    interface OnItemClickListener {
+        fun onItemClick(movie: MovieResultEntity)
+    }
+
     inner class MovieListViewHolder(private val binding:MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(getItem(position))
+                }
+            }
+        }
         fun bind(item: MovieResultEntity) {
             binding.apply{
                 movieCardBg.load(BASE_IMAGE_URL + item.poster_path)
