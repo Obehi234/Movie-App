@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.streammoviesapplication.databinding.FragmentMoviesCategoryNavBinding
 import com.example.streammoviesapplication.presentation.tabViews.TabDocumentaryFragment
 import com.example.streammoviesapplication.presentation.tabViews.TabMovieListFragment
-import com.example.streammoviesapplication.presentation.tabViews.TabSportFragment
+import com.example.streammoviesapplication.presentation.tabViews.TabHorrorFragment
 import com.example.streammoviesapplication.presentation.tabViews.TabTvSeriesFragment
 import com.example.streammoviesapplication.presentation.vpAdapter.ViewPagerAdapter
 
@@ -33,7 +33,7 @@ class MoviesCategoryFragment : Fragment() {
         adapter.addFragment(TabMovieListFragment(), "Movies")
         adapter.addFragment(TabTvSeriesFragment(), "TvSeries")
         adapter.addFragment(TabDocumentaryFragment(), "Documentary")
-        adapter.addFragment(TabSportFragment(), "Horror")
+        adapter.addFragment(TabHorrorFragment(), "Horror")
 
         binding.vpSearch.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.vpSearch)

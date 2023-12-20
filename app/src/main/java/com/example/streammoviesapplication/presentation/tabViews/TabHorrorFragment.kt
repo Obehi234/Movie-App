@@ -13,7 +13,7 @@ import com.example.streammoviesapplication.presentation.adapter.HorrorMovieAdapt
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
-class TabSportFragment : Fragment() {
+class TabHorrorFragment : Fragment() {
     private var _binding: FragmentSportsTabBinding? = null
     private val binding get() = _binding!!
     private val vm: TabViewModel by activityViewModels()
