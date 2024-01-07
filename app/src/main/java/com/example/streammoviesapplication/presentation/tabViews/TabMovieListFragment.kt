@@ -1,18 +1,23 @@
 package com.example.streammoviesapplication.presentation.tabViews
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.FragmentMoviesTabBinding
 import com.example.streammoviesapplication.presentation.adapter.MovieListAdapter
+import com.example.streammoviesapplication.presentation.navFragments.MoviesCategoryFragmentDirections
 import com.example.streammoviesapplication.presentation.viewmodel.tabViewModel.TabViewModel
 import com.example.streammoviesapplication.utils.resource.Resource
 
-class TabMovieListFragment : Fragment() {
+class TabMovieListFragment : Fragment(),
+    com.example.streammoviesapplication.presentation.tabAdapters.MovieListAdapter.OnItemClickListener {
     private var _binding: FragmentMoviesTabBinding? = null
     private val binding get() = _binding!!
     private val vm:TabViewModel by activityViewModels()
@@ -29,7 +34,14 @@ class TabMovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tabMovieAdapter = MovieListAdapter()
+        tabMovieAdapter = MovieListAdapter(object : MovieListAdapter.OnItemClickListener {
+            override fun onItemClick(movie: MovieResultEntity) {
+                Log.d("MovieListAdapter", "Clicked movie: ${movie.id}")
+                val action = MoviesCategoryFragmentDirections.actionPlayToTabMovieDetailsFragment(movie.id)
+                findNavController().navigate(action)
+            }
+        })
+
         setUpRV()
 
     }
@@ -70,5 +82,13 @@ class TabMovieListFragment : Fragment() {
     private fun showProgressbar() {
         binding.movieListPgBar.visibility = View.VISIBLE
     }
+
+    override fun onItemClick(itemId: Int) {
+        Log.d("CHECK_ID", "$itemId")
+        val action = MoviesCategoryFragmentDirections.actionPlayToTabMovieDetailsFragment(itemId)
+        findNavController().navigate(action)
+    }
+
+
 
 }

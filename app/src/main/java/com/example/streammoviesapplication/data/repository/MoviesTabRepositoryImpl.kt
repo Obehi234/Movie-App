@@ -1,5 +1,6 @@
 package com.example.streammoviesapplication.data.repository
 
+import android.util.Log
 import com.example.streammoviesapplication.data.db.MovieListDao
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.data.model.mapper.MovieTabMapper
@@ -24,8 +25,9 @@ class MoviesTabRepositoryImpl
                         MovieTabMapper.mapRemoteTabToTabEntity(result)
 
                     }
-
+                    Log.d("CHECK_TV_REPO", "$movieTabResult")
                     if(movieTabList != null) {
+                        Log.d("CHECK_TV", "$movieTabList")
 
                         movieTabDao.insertMovieList(movieTabList)
                     }

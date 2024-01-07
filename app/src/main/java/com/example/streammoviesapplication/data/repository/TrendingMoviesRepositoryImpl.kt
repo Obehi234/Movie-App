@@ -1,7 +1,6 @@
 package com.example.streammoviesapplication.data.repository
 
 
-import android.util.Log
 import com.example.streammoviesapplication.data.db.TrendingMoviesDao
 import com.example.streammoviesapplication.data.model.localData.TrendingMoviesEntity
 import com.example.streammoviesapplication.network.MovieService

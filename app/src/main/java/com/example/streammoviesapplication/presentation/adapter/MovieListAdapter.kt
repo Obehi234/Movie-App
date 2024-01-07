@@ -2,18 +2,34 @@ package com.example.streammoviesapplication.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
+import com.example.streammoviesapplication.presentation.tabViews.TabMovieListFragment
 import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
-class MovieListAdapter: ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
+class MovieListAdapter(
+    private val onItemClickListener: OnItemClickListener
+) : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieDiffUtilCallback()) {
+
+    interface OnItemClickListener {
+        fun onItemClick(movie: MovieResultEntity)
+    }
 
     inner class MovieListViewHolder(private val binding:MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onItemClick(getItem(position))
+                }
+            }
+        }
         fun bind(item: MovieResultEntity) {
             binding.apply{
                 movieCardBg.load(BASE_IMAGE_URL + item.poster_path)

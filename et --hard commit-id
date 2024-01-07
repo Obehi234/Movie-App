@@ -1,0 +1,31 @@
+[33m1a38e8d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtab_movie_details_screen[m[33m, [m[1;31morigin/tab_movie_details_screen[m[33m)[m Updated movie details dao
+[33m044e940[m Created Genre Type Converter
+[33m6a0f190[m Created type converter for Genre class and added to database
+[33m54166e5[m Object type converter
+[33m4cdc4af[m Added movie details dao to app module
+[33md78c908[m Added movie details entity to database
+[33ma01b55e[m Created dao for movie details
+[33mbbf5b53[m Mapped movie details remote to local
+[33m70973e7[m Created data class for movie details
+[33m892b267[m skeleton for adapter adjusted
+[33m96b01f8[m Set up skeleton for details page horizontal adapter
+[33m7665df4[m Created item view for horizontal movie rv
+[33mc87cf0d[m Created item page for movie details horizontal recyclerview
+[33mc887cc7[m Movie Details Screen in progress
+[33mebf9a55[m UI Layer for details screen
+[33m5d96603[m Created Fragment for TabMovieDetails
+[33m40955bb[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Movie tab rv feature (#11)
+[33m4a07b81[m Screen1 functionality setup (#10)
+[33m1b73366[m Screen 1 (#9)
+[33me40583f[m Created screen 1 assets
+[33mb0fcfea[m Error handling implemented in Viewmodel
+[33me7295ea[m Viewmodel setup (#8)
+[33m42f4d72[m Created repository class and implemented fetchTrendingMovies function (#7)
+[33mf5819b8[m Created Repository class to define relevant functions implementing trendingMoviesDao
+[33m41e5a31[m Database setup (#6)
+[33m01612bf[m Network call setup (#5)
+[33m020aae5[m Di setup (#4)
+[33md6d8b48[m Screen1 model setup (#3)
+[33m13f4973[m Bottom nav setup (#2)
+[33maec9a96[m Dependency setup (#1)
+[33m4cd8d58[m Empty Project

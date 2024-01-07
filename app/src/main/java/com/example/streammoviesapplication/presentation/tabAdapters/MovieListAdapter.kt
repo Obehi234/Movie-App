@@ -2,21 +2,43 @@ package com.example.streammoviesapplication.presentation.tabAdapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.streammoviesapplication.data.model.localData.MovieResultEntity
 import com.example.streammoviesapplication.databinding.MovieTabRecyclerItemBinding
+import com.example.streammoviesapplication.utils.Constants.BASE_IMAGE_URL
 
 
-class MovieListAdapter() : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
+class MovieListAdapter(
+    private val navController: NavController,
+    private val onItemClickListener: OnItemClickListener
+) : ListAdapter<MovieResultEntity, MovieListAdapter.MovieListViewHolder>(MovieListDiffUtilCallback()) {
 
-    inner class MovieListViewHolder(private val binding : MovieTabRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    interface OnItemClickListener {
+        fun onItemClick(itemId: Int)
+    }
+
+
+
+    inner class MovieListViewHolder(private val binding: MovieTabRecyclerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val movieId = getItem(position).id
+                    onItemClickListener.onItemClick(movieId)
+                }
+            }
+        }
         fun bind(item: MovieResultEntity) {
 
-            binding.apply{
-                movieCardBg.load("https://image.tmdb.org/t/p/w500" + item.poster_path)
+            binding.apply {
+                movieCardBg.load(BASE_IMAGE_URL + item.poster_path)
                 movieTv.text = item.title
             }
 
@@ -25,11 +47,17 @@ class MovieListAdapter() : ListAdapter<MovieResultEntity, MovieListAdapter.Movie
     }
 
     class MovieListDiffUtilCallback : DiffUtil.ItemCallback<MovieResultEntity>() {
-        override fun areItemsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
+        override fun areItemsTheSame(
+            oldItem: MovieResultEntity,
+            newItem: MovieResultEntity
+        ): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: MovieResultEntity, newItem: MovieResultEntity): Boolean {
+        override fun areContentsTheSame(
+            oldItem: MovieResultEntity,
+            newItem: MovieResultEntity
+        ): Boolean {
             return oldItem == newItem
         }
     }

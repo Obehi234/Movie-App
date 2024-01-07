@@ -17,4 +17,18 @@
     <string name="star_wars_the_last_jedi">Star Wars: The Last Jedi</string>
     <string name="icon_showing_movie_rating">icon showing movie rating</string>
     <string name="profile_nav_fragment">Profile Nav Fragment</string>
+    <string name="details_placeholder_text">Star Wars: The Last Jedi</string>
+    <string name="rating_4k">4K</string>
+    <string name="tv_clock_value">152 Minutes</string>
+    <string name="action">Action</string>
+    <string name="placeholder_movie">Movie Title</string>
+    <string name="rating_text">7.0 (iMDb)</string>
+    <string name="release_date">Release Date</string>
+    <string name="genre">Genre</string>
+    <string name="december_9_2017">December 9, 2017</string>
+    <string name="action_detail">Action</string>
+    <string name="sci_fi">Sci-Fi</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="synopsis_detail">Rey (Daisy Ridley) finally manages to find the legendary Jedi knight, Luke Skywalker (Mark Hamill) on an island with a magical aura. The heroes of The Force Awakens including Leia, Finn Read more..</string>
+    <string name="related_movies">Related Movies</string>
 </resources>
